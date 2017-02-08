@@ -3,21 +3,27 @@ package com.example.models;
 /**
  * Created by RyanHarper on 2/8/17.
  */
-
-
 public class Post {
 
     private long id;
     private String title;
     private String body;
 
+    public Post() {
+
+    }
+
     public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
-    public Post(){
 
+    public Post(long id, String title, String body) {
+        this.title = title;
+        this.body = body;
     }
+
+
 
     public String getTitle() {
         return title;

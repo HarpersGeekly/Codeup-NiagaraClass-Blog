@@ -11,6 +11,16 @@
 
 <h1>SHOW ONE POST</h1>
 
-<h1>This is a post: <span th:text="${post.title +' '+ post.body}"></span></h1>
+<!--use th:object ONLY for a single object, not for lists-->
+<div th:object="${post}">
+    <h1 th:text="*{title}"></h1>
+    <p th:text="*{body}"></p>
+</div>
+<!--same as:-->
+<!--<h1 th:text="${post.title}"></h1>-->
+<!--<p th:text="${post.body}"></p>-->
+
+
+
 </body>
 </html>
