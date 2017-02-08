@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index</title>
+</head>
+<body>
+<div class="navbar" th:include="fragments/navbar :: newNavbar">
+    This is inside content
+</div>
+
+<h1>SHOW ALL POSTS HERE</h1>
+
+<h1>These are all the posts:
+    <p th:each="post : ${ListOfposts}">
+        <span th:text="${post.title + ' ' + post.body}"></span>
+    </p>
+</h1>
+</body>
+</html>

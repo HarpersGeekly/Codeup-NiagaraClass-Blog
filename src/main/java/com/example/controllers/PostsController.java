@@ -1,24 +1,38 @@
 package com.example.controllers;
+import com.example.models.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by RyanHarper on 2/7/17.
  */
 @Controller
-
 public class PostsController {
 
     @GetMapping("/posts")
-    @ResponseBody
-    public String viewAllPosts() {
-        return "<h1>Posts index page</h1>";
-    }
+    public String viewAllPosts(Model model) {
+
+        // array list with several post objects
+        List<Post> posts = new ArrayList<>();
+
+        // pass the list to the view (through a view model)
+        posts.add(new Post("My first post", "body of post"));
+        posts.add(new Post("this is a post", "this is the body"));
+        model.addAttribute("ListOfposts", posts);
+
+        return "/posts/index";
+    } // index.html
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String viewSinglePost(@PathVariable long id) {
-        return "<h1>view an individual post with ID: " + id + ".</h1>";
+    public String viewSinglePost(@PathVariable long id, Model model) {
+//        Inside the method that shows an individual post, create a new post object and pass it to the view.
+        Post post = new Post("Hello World", "World body");
+        model.addAttribute("post", post);
+        return "/posts/show"; // show.html
     }
 
     // think of the next two as Step 1, and then Step 2 respectively...a doGet, doPost

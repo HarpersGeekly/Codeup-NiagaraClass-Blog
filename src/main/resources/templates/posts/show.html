@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Show</title>
+</head>
+<body>
+<div class="navbar" th:include="fragments/navbar :: newNavbar">
+    This is inside content
+</div>
+
+<h1>SHOW ONE POST</h1>
+
+<h1>This is a post: <span th:text="${post.title +' '+ post.body}"></span></h1>
+</body>
+</html>

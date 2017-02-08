@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Check Correct Number</title>
+</head>
+<body>
+
+
+
+<h1 th:if="${random == guess}">You rolled a <span th:text="${guess}"></span>. CORRECT!</h1>
+<h1 th:if="${random != guess}"> The number was <span th:text="${random}"></span>. You guessed wrong. Try again.</h1>
+
+
+</body>
+</html>

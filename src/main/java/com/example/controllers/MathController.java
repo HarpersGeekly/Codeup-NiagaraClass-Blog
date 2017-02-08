@@ -27,6 +27,7 @@ public class MathController {
     public String subtraction(@PathVariable int x, @PathVariable int y) {
         return "<h1> Subtraction: " + x + " - " + y + " = " + (x - y) + "</h1>";
 
+
     }
     @GetMapping("/multiply/{x}/by/{y}")
     @ResponseBody

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Roll Dice</title>
+</head>
+<body>
+<div class="navbar" th:include="fragments/navbar :: newNavbar">
+    This is inside content
+</div>
+
+<!--Create a page at /roll-dice that asks the user to guess a number. -->
+<h1>Welcome to the Dice Roll page. Guess a number:</h1>
+<ul>
+    <li><a href="/roll-dice/1">1</a></li>
+    <li><a href="/roll-dice/2">2</a></li>
+    <li><a href="/roll-dice/3">3</a></li>
+    <li><a href="/roll-dice/4">4</a></li>
+    <li><a href="/roll-dice/5">5</a></li>
+    <li><a href="/roll-dice/6">6</a></li>
+</ul>
+
+<h1 th:if="${random} == ${guess} and ${guess}!= null">You rolled a <span th:text="${guess}"></span>. CORRECT!</h1>
+<h1 th:if="${random} != ${guess}"> The number was <span th:text="${random}"></span>. You guessed wrong. Try again.</h1>
+
+
+<!--There should be links on this page for 1 through 6 that should make a -->
+<!--get request to /roll-dice/n where n is the number guessed. -->
+<!--This page should display a random number (the dice roll), the user's guess, -->
+<!--and a message based on whether or not they guessed the correct number.-->
+
+
+
+</body>
+</html>
