@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>edit</title>
+</head>
+<body>
+<div class="navbar" th:include="fragments/navbar :: newNavbar">
+    This is inside content
+</div>
+
+<form action="/posts/{id}/edit" method="POST" th:object="${post}">
+    <label>Title:</label>
+
+    <input type="text" name="title" th:field="*{title}"/>
+
+    <br />
+
+    <label>Description:</label>
+
+    <input type="text" name="body" th:field="*{body}"/>
+
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+
+</html>

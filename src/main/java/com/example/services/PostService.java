@@ -10,7 +10,7 @@ import java.util.List;
  * Created by RyanHarper on 2/8/17.
  */
 
-@Service("PostSvc")
+@Service("PostService")
 public class PostService {
 
     private List<Post> posts = new ArrayList<>();
@@ -19,23 +19,26 @@ public class PostService {
         createPosts();
     }
 
+    //retrieving an individual post object)
+    public Post findOnePost(long id) {
+        return posts.get((int)id - 1);
+    }
+
+    // retrieve all posts
+    public List<Post> findAllPosts() {
+        return posts;
+    }
+
     public Post savePost(Post post) {
         post.setId(posts.size() + 1);
         posts.add(post);
         return post;
     }
 
-    public List<Post> findAllPosts() {
-        return posts;
-    }
-
-    public Post findOnePost(long id) {
-        return posts.get((int) id - 1);
-    }
-
     private void createPosts() {
         for(int i=0;i<10;i++) {
-            savePost(new Post(i, "Hello World Post" + " " + (i+1), "World Body" ));
+            savePost(new Post(i + 1, "Hello World Post" + " " + (i+1), "World Body" ));
         }
     }
+
 }

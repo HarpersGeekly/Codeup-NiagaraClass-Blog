@@ -1,12 +1,23 @@
 package com.example.models;
 
+import javax.persistence.*;
+
 /**
  * Created by RyanHarper on 2/8/17.
  */
+
+@Entity // <-- this will define this model as a table
+@Table(name = "posts")
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(nullable = false, length = 100)
     private String title;
+
+    @Column(nullable = false, length = 1000)
     private String body;
 
     public Post() {
@@ -19,11 +30,10 @@ public class Post {
     }
 
     public Post(long id, String title, String body) {
+        this.id = id;
         this.title = title;
         this.body = body;
     }
-
-
 
     public String getTitle() {
         return title;

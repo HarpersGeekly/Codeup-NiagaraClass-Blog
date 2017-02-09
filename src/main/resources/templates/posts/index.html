@@ -9,13 +9,12 @@
     This is inside content
 </div>
 
-<h1 style="text-align: center">All Posts:
+<h1 style="text-align: center">All Posts:</h1>
 
-    <p th:each="post : ${ListOfPosts}">
+    <div th:each="post : ${ListOfPosts}">
         <h2 style="text-align: center"><span th:text="${post.title}"></span></h2>
         <h3 style="text-align: center"><span th:text="${post.body}"></span></h3>
-    </p>
+    </div>
 
-</h1>
 </body>
 </html>

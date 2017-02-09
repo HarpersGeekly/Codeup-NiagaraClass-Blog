@@ -9,13 +9,12 @@
     This is inside content
 </div>
 
-<h1>SHOW ONE POST</h1>
-
 <!--use th:object ONLY for a single object, not for lists-->
 <div th:object="${post}">
-    <h1 th:text="*{title}"></h1>
-    <p th:text="*{body}"></p>
+    <h1 style="text-align: center" th:text="*{title}"></h1>
+    <h2 style="text-align: center" th:text="*{body}"></h2>
 </div>
+
 <!--same as:-->
 <!--<h1 th:text="${post.title}"></h1>-->
 <!--<p th:text="${post.body}"></p>-->
