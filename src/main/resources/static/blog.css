@@ -1,0 +1,32 @@
+h1 {
+    font-family: "Big Caslon";
+    color: #4d6c67;
+    font-size: 50px;
+    color: white;
+}
+
+h2, h3 {
+    font-family: Futura;
+    color: white;
+
+}
+
+#navbarContainer {
+    background: url("");
+
+}
+
+.navbar-nav {
+    color: white;
+}
+
+#logout {
+    margin-top:8px;
+    text-decoration: none;
+}
+
+body {
+    background: url("") no-repeat fixed;
+    background-size: cover;
+}
+

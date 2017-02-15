@@ -1,24 +1,45 @@
 package com.example.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 /**
  * Created by RyanHarper on 2/8/17.
  */
 
-@Entity // <-- this will define this model as a table
-@Table(name = "posts")
+@Entity // <-- this will define this model as a table, the Data Model. This now knows about the database!
+@Table(name = "posts") // specifies the name of the table as it appears in the database.
 public class Post {
 
-    @Id
+    @Id // specifies the primary key in the table and it's strategy type.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100) //creates column
+    @NotBlank(message="Title cannot be empty")
     private String title;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false, length = 2000)
+    @NotBlank(message="Description cannot be empty :/")
+    @Size(min = 5, message="Description must be at least 5 characters.")
     private String body;
+
+
+    @ManyToOne
+    // will define the foreign key. This class represents the post table and we need a reference to the user
+    // The convention is "the_other_table_name_id"
+    @JoinColumn(name = "user_id") // Define at the Table Level.  Lots of posts can have one "user"
+    private User user; // this is the owner/author/poster, etc.
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Post() {
 
