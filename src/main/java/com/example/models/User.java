@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class User {
 
     @Column(nullable = false)
     @NotBlank(message="Enter a username.")
+    @Pattern(regexp = "(?=^.{3,20}$)^[a-zA-Z][a-zA-Z0-9]*[._-]?[a-zA-Z0-9]+$")
     private String username;
 
     @Column(nullable = false)

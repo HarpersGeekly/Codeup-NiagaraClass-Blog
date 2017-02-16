@@ -18,7 +18,8 @@
     <div style="text-align: center" th:object="${post}">
         <h2 style="text-align: center" th:text="*{title}"></h2>
         <h3 style="text-align: left" th:text="*{body}"></h3>
-        <h4 style="text-align: left">Created by: <span th:text="${post.user.username}"></span></h4>
+        <h4 style="text-align: left">Created by: <a th:href="${'/users/' + post.user.id}"
+                                                    th:text="${post.user.username}"></a></h4>
 
         <div sec:authorize="isAuthenticated()">
             <a class="btn btn-primary" th:href="${'/posts/' + post.id + '/edit'}">Edit</a>

@@ -20,8 +20,8 @@ import java.util.List;
 @Repository
 public interface Posts extends CrudRepository
         </*the entity to return*/Post, /*type of identifier:*/Long> {
-@Query("select p from Post p where title like ?1")
-    public List<Post> findWhereTitleLike(String title);
+//@Query("select p from Post p where title like ?1")
+    public List<Post> findByTitleIsLikeOrBodyIsLike(String title, String body);
 
 //@Query("select p from Post p where body like ?1")
 //    public List<Post> findWhereBodyLike(String body);

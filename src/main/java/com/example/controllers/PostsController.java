@@ -120,14 +120,7 @@ public class PostsController {
     @GetMapping("/posts/search")
     public String searchTitle(@RequestParam(name = "term") String term, Model model) {
         System.out.println(term);
-        model.addAttribute("ListOfPosts", postsDao.findWhereTitleLike("%" + term + "%"));
-        return "posts/index";
+        model.addAttribute("ListOfPosts", postsDao.findByTitleIsLikeOrBodyIsLike("%" + term + "%", "%" + term + "%"));
+        return "posts/search";
     }
-
-//    @GetMapping("/posts/search")
-//    public String searchBody(@RequestParam(name = "term") String term, Model model) {
-//        System.out.println(term);
-//        model.addAttribute("ListOfPosts", postsDao.findWhereBodyLike("%" + term + "%"));
-//        return "posts/index";
-//    }
 }
