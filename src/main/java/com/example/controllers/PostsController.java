@@ -3,15 +3,21 @@ import com.example.models.Post;
 import com.example.models.User;
 import com.example.repositories.Posts;
 import com.example.services.PostService;
+import com.example.services.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -30,10 +36,18 @@ public class PostsController {
     @Autowired // The Interface: Posts, the instance variable: postsDao;
     Posts postsDao;
 
+    @Autowired
+    UserSvc usersSvc; // now we can use the UserSvc class...
+
     @GetMapping("/posts")
     public String viewAllPosts(Model model) {
-        model.addAttribute("ListOfPosts", postsDao.findAll());
+        model.addAttribute("ListOfPosts", Collections.emptyList()); /*postsDao.findAll());*/
         return "/posts/index";
+    }
+
+    @GetMapping("/posts.json")
+    public @ResponseBody List<Post>retrieveAllAds() {
+        return (List<Post>) postsDao.findAll();
     }
 
     @GetMapping("/posts/{id}")
@@ -49,19 +63,36 @@ public class PostsController {
         return "/posts/create";
     }
 
+    @Value("${uploads}")
+    private String uploadsPath;
     @PostMapping("/posts/create")
-    public String createNewPost(@Valid Post post, Errors validation, Model model) {
+    public String createNewPost(
+            @Valid Post post,
+            Errors validation,
+            Model model,
+            // FILE UPLOAD FEATURE:
+            @RequestParam(name = "image_file") MultipartFile uploadedFile) {
         // @Valid calls @ModelAttribute first and calls the validations!
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("post", post);
             return "/posts/create";
         }
+        // FILE UPLOAD FEATURE: =====
+        //unix based : mac, linux -> the folder for temporary files is always /tmp
+        //kadsadja12334
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadsPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile); // moves file in this step
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // ==========================
 
-        // get this from the curriculum:
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        //
-        post.setUser(user);
+        post.setUser(usersSvc.loggedInUser());
+        post.setImage(filename);
         postsDao.save(post);
         return "redirect:/posts";
     }

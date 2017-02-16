@@ -1,7 +1,9 @@
 package com.example.controllers;
-
 import com.example.models.User;
+import com.example.models.UserRole;
+import com.example.repositories.Roles;
 import com.example.repositories.Users;
+import com.example.services.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,9 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.validation.Valid;
 
 
@@ -23,14 +25,17 @@ public class AuthenticationController {
 
     private Users usersDao;
     private PasswordEncoder encoder;
+    private Roles roles;
+    private UserSvc userSvc;
 
     @Autowired
-    public AuthenticationController(Users usersDao, PasswordEncoder encoder) {
+    public AuthenticationController(Users usersDao, PasswordEncoder encoder, Roles roles, UserSvc userSvc) {
         this.usersDao = usersDao;
         this.encoder = encoder;
+        this.roles = roles;
+        this.userSvc = userSvc;
     } // constructor injection. We first need a constructor that receives an arguement for use.
     // In this case the repository usersDao.
-
 
     @GetMapping("/login")
     public String showLoginForm() {
@@ -72,8 +77,23 @@ public class AuthenticationController {
         String hashedPassword = encoder.encode(user.getPassword()); // hash the user's password
         user.setPassword(hashedPassword);
         // save the user to the database:
-        usersDao.save(user);
+        User newUser = usersDao.save(user);
+
+        UserRole ur = new UserRole();
+        ur.setRole("ROLE_USER");
+        ur.setUserId(newUser.getId());
+        roles.save(ur);
         //redirect the user to the login page:
         return "redirect:/login";
     }
+
+    @GetMapping("users/{id}")
+    public String showUser(@PathVariable Long id, Model model) {
+        User user = usersDao.findById(id);
+        model.addAttribute("user", user);
+        model.addAttribute("showEditControls", userSvc.isLoggedIn()
+ && user.getUsername() == userSvc.loggedInUser().getUsername());
+        return "entry/userprofile";
+    }
+
 }

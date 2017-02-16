@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User Profile</title>
+</head>
+
+<body>
+
+<div th:object="${user}">
+    <h3 th:text="*{username}"></h3>
+    <p th:text="*{email}"></p>
+    <!--<a class="btn btn-primary" th:href="@{'/users/'+ ${user.id} +'/edit' }">Edit User</a>-->
+</div>
+
+<div th:if="${showEditControls}">
+    edit and delete buttons go here
+</div>
+
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users. <br/>
+
+    Logged user: <span sec:authentication="name"></span> <br/>
+    Existing Roles: <span sec:authentication="principal.authorities"></span> <br/>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <div> show this for Admins only</div>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <div> show this for users only</div>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_GUEST')">
+        <div> show this for guests only</div>
+    </div>
+</div>
+
+</body>
+</html>

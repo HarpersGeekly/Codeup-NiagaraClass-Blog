@@ -1,5 +1,8 @@
 package com.example.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -29,9 +32,11 @@ public class User {
     @Column(nullable = false)
     @NotBlank(message="Your password cannot be empty.")
     @Size(min = 8, message="Your password must be at least 8 characters.")
+    @JsonIgnore
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")  // Defined at the Object Level.
+    @JsonBackReference
             // A user can have many posts.
             // Hence, OneToMany relationship. The property is "user" because on the other relationship
             // the instance is called "user". We would then need to modify the Many...(Post.java)

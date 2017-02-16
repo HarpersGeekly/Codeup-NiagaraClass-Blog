@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <head>
     <meta charset="UTF-8"/>
     <title>Show</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
     <link rel="stylesheet" type="text/css" href="../../blog.css"/>
 </head>
 <body>
@@ -13,11 +16,15 @@
 <!--use th:object ONLY for a single object, not for lists-->
 <div class="container">
     <div style="text-align: center" th:object="${post}">
-        <h4 style="text-align: left">Created by: <span th:text="${post.user.username}"></span></h4>
         <h2 style="text-align: center" th:text="*{title}"></h2>
-        <h3 style="text-align: center" th:text="*{body}"></h3>
-        <a class="btn btn-primary" style="text-align:center" th:href="${'/posts/' + post.id + '/edit'}">Edit</a>
+        <h3 style="text-align: left" th:text="*{body}"></h3>
+        <h4 style="text-align: left">Created by: <span th:text="${post.user.username}"></span></h4>
+
+        <div sec:authorize="isAuthenticated()">
+            <a class="btn btn-primary" th:href="${'/posts/' + post.id + '/edit'}">Edit</a>
+        </div>
     </div>
+
 </div>
 
 <!--same as:-->
