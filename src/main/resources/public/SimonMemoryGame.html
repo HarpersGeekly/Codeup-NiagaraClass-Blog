@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Memory Game</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/SimonMemoryGame.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+</head>
+<body>
+<h1 class="title">Simon Memory Game.</h1>
+<p id="ask">Would you like to play?</p>
+
+<div class="container">
+
+    <div class="row">
+        <div class="square col-md-6 red"></div>
+        <div class="square col-md-6 green"></div>
+    </div>
+
+    <div class="row">
+        <div class="square col-md-6 blue"></div>
+        <div class="square col-md-6 yellow"></div>
+    </div>
+
+    <div class="row" id="buttonAndSelector">
+
+        <form id="form1">
+            <button id="play" type="submit">PLAY</button>
+            <select id="select">
+                <option id="normal" value="normal">Normal</option>
+                <option id="hard" value="hard">Hard</option>
+            </select>
+        </form>
+    </div>
+</div>
+
+<div class="levelAndHighScoreDiv col-md-6">
+
+    <h1 id="level">Round:</h1>
+    <h1 id="hiddenRound"></h1>
+    <h1 id="highScoreHeader">High Score:</h1>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/SimonMemoryGame.js"></script>
+</body>
+</html>

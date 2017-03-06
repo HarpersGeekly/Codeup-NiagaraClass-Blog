@@ -29,7 +29,7 @@
                 '</div>';
         }
 
-        html += ''
+        html += '';
         $('#load-posts').html(html);
 
     });

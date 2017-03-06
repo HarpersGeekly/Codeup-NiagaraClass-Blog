@@ -1,0 +1,195 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    /*font: 400 15px/1.8 "Lato", sans-serif;*/
+    /*color: #777;*/
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg-10 {
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgimg-1 {
+    background-image: url("http://i0.wp.com/www.thedarkcorner.org/wp-content/uploads/2014/11/Ridley-Scott.jpg?resize=1920%2C1080");
+    min-height: 100%;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: .10%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+
+.caption span.border {
+    /*background-color: #111;*/
+    color: #e2984c;
+    /*color: #ac2020;*/
+    padding: 18px;
+    font-family: Audiowide;
+    font-size: 8.5em;
+    text-shadow: 2px 2px black;
+    /*letter-spacing: 10px;*/
+}
+
+#mainQuote {
+    font-family: Playfair Display;
+    font-size: 4rem;
+    color: #e4fcff;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 30%;
+    text-shadow: 2px 2px black;
+}
+
+#timeLine {
+    padding-top: 10px;
+    text-align: center;
+    font-family: Futura;
+    font-size: 2rem;
+    list-style-type: none;
+}
+
+h3 {
+    letter-spacing: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    font: 20px "Lato", sans-serif;
+    color: #f7f7f7
+}
+
+.timeLineQuote {
+    color: black;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: Avenir;
+    font-size: 2rem;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.bgimg-2 {
+    background-image: url("http://images.dailytech.com/nimage/Ridley_Scott_Wide.jpg");
+    min-height: 600px;
+}
+
+#filmCareer {
+    margin: 30px;
+    font-family: Avenir;
+    font-size: 22px;
+    text-align: left;
+}
+.movieTitle {
+    padding: 20px;
+    margin-bottom: 0px;
+    font-family: Avenir;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/*ALIEN https://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/t/56054a09e4b0612d66a925c3/1443187210703/*/
+/*https://skinwalker.files.wordpress.com/2013/01/vlcsnap-2013-01-20-16h51m57s34.png*/
+.bgimg-3 {
+    background-image: url("http://images5.fanpop.com/image/photos/28800000/Alien-ellen-ripley-28849305-1280-544.jpg");
+    min-height: 100vh;
+    /*min-height: 750px*/
+}
+
+/*BLADE RUNNER https://images4.alphacoders.com/798/79878.jpg  https://cnet3.cbsistatic.com/img/WbnkmHFMOxBX7R2hBKyg8htIv-Y=/970x0/2015/02/27/434eb576-2563-48e5-8bbb-4aad3d53010e/deckard2.png  */
+.bgimg-4 {
+    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/16/00/18/160018d56e26a895078284d07e89fd16.jpg");
+    min-height: 100vh;
+}
+/*https://i.ytimg.com/vi/2iBFmKlO4BY/maxresdefault.jpg*/
+/*THELMA AND LOUISE */
+.bgimg-5 {
+    background-image: url("https://geektometv.files.wordpress.com/2016/08/thelma-louise-7.jpg?w=1092&h=400&crop=1");
+    min-height: 100vh;
+}
+/*GLADIATOR*/
+.bgimg-6 {
+    background-image: url("http://blog.hdwallsource.com/wp-content/uploads/2016/05/gladiator-movie-wide-wallpaper-52399-54110-hd-wallpapers.jpg");
+    min-height: 100vh;
+}
+/*AMERICAN GANGSTER */
+.bgimg-7 {
+    background-image: url("http://i.imgur.com/z60NxQN.jpg");
+    min-height: 100vh;
+}
+/*PROMETHEUS*/
+.bgimg-8 {
+    background-image: url("http://2.bp.blogspot.com/-irA9JevMPLk/UPHSOMszkYI/AAAAAAAAIDs/a6q9YIKwqPc/s1600/prom.jpg");
+    min-height: 100vh;
+}
+.bgimg-9 {
+/*THE MARTIAN http://wallpapersdsc.net/wp-content/uploads/2015/09/33_the_martian.jpg*/
+    background-image: url("http://static6.businessinsider.com/image/55d4ac4ddd0895f0048b45c3-1145-526/screen%20shot%202015-08-19%20at%2010.41.45%20am.png");
+    min-height: 100vh;
+}
+
+.bgimg-10 {
+    background-image: url("http://cdn.collider.com/wp-content/uploads/2016/06/alien-covenant-ridley-scott-michael-fassbender.jpg");
+    min-height: 800px;
+}
+
+#lastQuote {
+    font-family: Avenir;
+    font-size: 3rem;
+    color: #e4fcff;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 20%;
+    text-shadow: 2px 2px black;
+    text-align: left;
+}
+
+#infoFooter {
+    margin-top: 25%;
+    color: white;
+    font-size: 20px;
+    text-shadow: 1px 1px black;
+    text-align: center;
+    font-family: Avenir;
+}
+
+#IMDB {
+    background-color: #f3ce13;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 0px solid #000;
+    box-shadow: 2px 2px #000000
+}
+
+#Wiki {
+    background-color: #f5f5f5;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 0px solid #000;
+    box-shadow: 2px 2px #000000
+}
+#Twitter {
+    background-color: #00aced;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 0px solid #000;
+    box-shadow: 2px 2px #000000
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9  {
+        background-attachment: scroll;
+    }
+}

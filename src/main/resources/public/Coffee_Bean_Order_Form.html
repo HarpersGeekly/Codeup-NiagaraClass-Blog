@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>1st Coffee Bean Order Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!--<meta name="viewport"-->
+    <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+
+    <style>
+
+
+        @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Merienda|Pompiere');
+
+
+
+        .container {
+            /*margin-left: 300px;*/
+            /*margin-right: 300px;*/
+            /*text-align: center;*/
+
+        }
+
+        body {
+
+            background: url('http://www.toasto.com/wp-content/uploads/2010/04/coffee-beans-and-mug.jpg') no-repeat fixed;
+            background-size: cover;
+
+        }
+
+        h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 100px;
+            color: springgreen;
+            text-shadow: 2px 2px #000000;
+        }
+
+        h2 {
+            font-family: 'Merienda', cursive;
+            font-size: 30px;
+            color: wheat;
+            text-shadow: 2px 2px #000000;
+            text-align: center;
+        }
+
+        .KindofCoffeeContainer, .HowManyBags, .Shipping, .AutoRenewal, .Submit {
+            background: rgba(169, 169, 169, 0.6);
+            padding: 25px;
+            margin: 10px;
+            font-size: 24px;
+            border-radius: 8px;
+            /*text-align: center;*/
+        }
+
+        .KindofCoffeeContainer {
+            text-align: center;
+
+        }
+
+        .HowManyBags {
+            text-align: center;
+
+        }
+
+
+        .AutoRenewal {
+            text-align: center;
+        }
+
+        .Submit {
+            text-align: center;
+        }
+
+        #FirstName, #LastName, #Address, #CityStateZip {
+            width: 90%;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            margin: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            margin: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        input[type=text] {
+            padding: 5px 5px;
+            margin: 0px 0;
+            box-sizing: border-box;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: 'Pompiere';
+            /*text-align: center;*/
+            background-color: aliceblue;
+
+        }
+
+        label {
+            color: black;
+            font-weight: bold;
+            font-family: 'Pompiere';
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+
+
+        button {
+            background-color: springgreen; /* Green */
+            border: none;
+            color: black;
+            padding: 25px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            font-family: 'Amatic SC', cursive;
+            font-size: 60px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkseagreen;
+        }
+        button:active {
+            background-color: wheat;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+<form method="post" action="<!--url for request bin goes here-->">
+
+
+
+<div class="KindofCoffeeContainer">
+
+    <h1>Coffee Order Form</h1><hr>
+    <h2>Choose your coffee:</h2>
+    <label>
+        <input type="radio" name="roast">Dark Roast
+    </label>
+    <label>
+        <input type="radio" name="roast">Medium Roast
+    </label>
+    <label>
+        <input type="radio" name="roast">Light Roast
+    </label>
+</div>
+
+<div class="HowManyBags">
+    <h2>Choose your quantity:</h2>
+
+    <label>
+        <input type="radio" name="Amount" value="1">1 Bag
+    </label>
+    <label>
+        <input type="radio" name="Amount" value="2">2 Bags
+    </label>
+    <label>
+        <input type="radio" name="Amount" value="3">3 Bags
+    </label>
+    <label>
+        <input type="radio" name="Amount" value="4">4 Bags (Maximum Per Order)
+    </label>
+</div>
+
+<div class="Shipping">
+    <h2>Shipping destination:</h2>
+    <!--are id's predominantly for css?? or do we keep changing them-->
+    <p>
+    <label for="FirstName">First Name:  </label>
+    <input id="FirstName" name="First Name" type="text">
+    </p>
+    <p>
+        <label for="LastName">Last Name:  </label>
+        <input id="LastName" name="Last Name" type="text">
+    </p>
+    <p>
+        <label for="Address">Street Address:  </label>
+        <input id="Address" name="Address" type="text">
+    </p>
+    <p>
+        <label for="CityStateZip">City, State, Zip:  </label>
+        <input id="CityStateZip" name="CityStateZip" type="text">
+    </p>
+</div>
+
+<div class="AutoRenewal">
+    <h2>Would you like to sign up for auto renewal?</h2>
+
+    <input type="checkbox" id="AutoRenewalYes" name="AutoRenewal" value="1">
+    <label for="AutoRenewalYes">Yes, please.</label><br>
+    <input type="checkbox" id="AutoRenewalNo" name="AutoRenewal" value="0">
+    <label for="AutoRenewalNo">No, thanks.</label><hr>
+
+    <h2>Thank you! You're one step away from coffee bliss...</h2>
+</div>
+
+    <div class="Submit">
+    <!--<input type="submit">-->
+    <button type="Submit">Submit Your Order!</button>
+    </div>
+
+
+</form>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    $('input[type="checkbox"]').on('change', function() {
+        $('input[type="checkbox"]').not(this).prop('checked', false);
+    });
+</script>
+</body>
+</html>
+
+
+<!--Coffee Bean Order Form-->
+
+<!--Create an html form for ordering coffee beans. Include:-->
+
+<!--type of roast (dark or light)-->
+
+<!--quantity-->
+
+<!--a checkbox for signing up for auto renewal-->
+
+<!--input elements for entering the address for where the beans are to be delivered-->
+
+<!--<h5>Checkbox Version?</h5>-->
+
+<!--<input type="checkbox" id="Amount1" name="Amount" value="1">-->
+<!--<label for="Amount1">1 Bag</label><br>-->
+
+<!--<input type="checkbox" id="Amount2" name="Amount" value="2">-->
+<!--<label for="Amount2">2 Bags</label><br>-->
+
+<!--<input type="checkbox" id="Amount3" name="Amount" value="3">-->
+<!--<label for="Amount3">3 Bags</label><br>-->
+
+<!--<input type="checkbox" id="Amount4" name="Amount" value="4">-->
+<!--<label for="Amount4">4 Bags</label><br>-->
+
+<!--<h5>Radio Version?</h5>-->

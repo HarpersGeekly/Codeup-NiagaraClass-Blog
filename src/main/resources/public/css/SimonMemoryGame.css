@@ -1,0 +1,114 @@
+
+body {
+    background-image: url('../images/darksharpedges.png');
+}
+.losingBackground {
+    background-image: url('http://31.media.tumblr.com/3fc81aab89f90b9904c3a48137f9d9c4/tumblr_mo13zmlJi81s3979jo1_400.gif');
+}
+
+#hardBackground {
+    background-color: #0000ff;
+}
+
+.title {
+    margin-top: 2%;
+    font-family: 'VT323', monospace;
+    text-align: center;
+    font-size: 65px;
+    color: #95ffa5;
+}
+#ask {
+    font-family: 'VT323', monospace;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+.container {
+    margin-top: 30px;
+}
+.row {
+    margin-left: 32%;
+}
+.square {
+    opacity: 0.6;
+}
+.red {
+    width: 200px;
+    height: 200px;
+    background-color: #f00000;
+    margin: 5px;
+    border: 5px solid black;
+    /*animation: #ff0000;*/
+}
+.green {
+    width: 200px;
+    height: 200px;
+    background-color: #00d400;
+    margin: 5px;
+    border: 5px solid black;
+    /*animation: #00D400;*/
+}
+.yellow {
+    width: 200px;
+    height: 200px;
+    background-color: #f2f200;
+    margin: 5px;
+    border: 5px solid black;
+    /*animation: #FFFF00;*/
+}
+.blue {
+    width: 200px;
+    height: 200px;
+    background-color: #0000ff;
+    margin: 5px;
+    border: 5px solid black;
+    /*animation: #0000FF;*/
+}
+#play {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    width: 25%;
+    border-radius: 20px;
+    font-family: 'VT323', monospace;
+    font-weight: bold;
+    font-size: 20px;
+    outline: none;
+    margin-right: 40px;
+}
+#play:hover {
+    background-color: #23ff78;
+    -webkit-animation: pulse infinite 1s;
+    animation: pulse infinite 1s;
+}
+
+#buttonAndSelector {
+    margin-left: 32.5%;
+}
+
+#select {
+    outline: none;
+    background-color: #ffcde8;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+}
+
+#level {
+    font-size: 50px;
+    font-family: 'VT323', monospace;
+    /*margin-left: 44%;*/
+    color: white;
+    /*margin-left: 35%;*/
+
+}
+#hiddenRound {
+    display: none;
+}
+
+#highScoreHeader, #highScore {
+    font-family: 'VT323', monospace;
+    font-size: 50px;
+    color: white;
+    /*margin-left: 20%;*/
+    clear: right;
+}

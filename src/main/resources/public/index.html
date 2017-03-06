@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/PortfolioPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+        <div class="container">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#theNavbarWords">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <h3 id="myName">Ryan Harper</h3>
+
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right" id="theNavbarWords">
+                    <li><a href="#about-section" class="sliding-link">About</a></li>
+                    <li><a href="#resume-section" class="sliding-link">Resume</a></li>
+                    <li><a href="#portfolio-section" class="sliding-link">Portfolio</a></li>
+                    <li><a href="#contact-section" class="sliding-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+<div class="wrapper">
+
+<a id="about-section"></a>
+<!--"container-fluid" fills the width of the screen, container has margins -->
+    <div class="container-fluid panels" id="About">
+        <div id="myPortrait" class="cropCircle"></div>
+        <h3 id="Hello">Hello, I am Ryan Harper. I'm a Full Stack Java Web Developer from San Antonio, Texas.
+            Software is a career change from a background in advertising sales and retail management. I couldn't be more happy
+            about my new adventure. Let's chat sometime!
+        </h3>
+        <p id="myNumberEmail">210.602.3618  |  HarperRyanC@gmail.com</p>
+    </div>
+
+<a id="resume-section"></a>
+
+    <div class="container-fluid panels" id="Resume">
+        <!--<h3 id="ResumeTitle">Resume</h3>-->
+                <h3 class="workAndSchool">University of Texas at San Antonio</h3>
+        <!--<img src="images/texas-san-antonio1.jpg" class="img-responsive logo">-->
+                <p class="pWorkAndSchool">graduated: 2008, B.B.A Marketing</p>
+                <h3 class="workAndSchool">Clear Channel Outdoor Advertising</h3>
+        <!--<img src="images/ClearChannelOutdoor.jpg" class="img-responsive logo">-->
+                <p class="pWorkAndSchool">account executive: 2011</p>
+                <h3 class="workAndSchool">Enterprise Rent-A-Car</h3>
+        <!--<img src="images/enterprise-logo.png" class="img-responsive logo">-->
+                <p class="pWorkAndSchool">assistant branch manager: 2012-2015</p>
+                <h3 class="workAndSchool">Codeup</h3>
+        <!--<img src="images/codeup-arrow.png" class="img-responsive">-->
+                <p class="pWorkAndSchool">graduated: 2017, Java Full Stack Web Development</p>
+    </div>
+
+<a id="portfolio-section"></a>
+
+<!--<div class="container-fluid .col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0" id="Portfolio">-->
+
+    <!--<h3 id="PortfolioTitle">Portfolio</h3>-->
+
+    <div id="myCarousel" class="carousel slide panels" data-ride="carousel">
+
+        <!-- indicator dots nav -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0"></li>
+            <li data-target="#myCarousel" data-slide-to="1" ></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
+
+        <!-- wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+            <div class="item">
+                <a href="TributePageParallax.html" target="_blank">
+                    <img src="images/RidleyScottTribute3.png" alt="FirstSlide" class="img-responsive slideImage">
+                </a>
+                <!--<div class="carousel-caption">-->
+                    <!--<h3>Tribute Page</h3>-->
+                <!--</div>-->
+            </div>
+
+            <div class="item">
+                <a href="CalculatorRevised.html" target="_blank">
+                    <img src="images/JavascriptCalculator.png" alt="SecondSlide" class="img-responsive slideImage">
+                </a>
+                <!--<div class="carousel-caption">-->
+                    <!--<h3>JavaScript Calculator</h3>-->
+                <!--</div>-->
+            </div>
+
+            <!--<div class="item">-->
+                <!--<a href="ajax_blog.html" target="_blank">-->
+                    <!--<img src="images/AjaxBlog.png" alt="ThirdSlide" class="img-responsive slideImage">-->
+                <!--</a>-->
+                <!--&lt;!&ndash;<div class="carousel-caption">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<h3>AJAX Blog</h3>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+
+            <div class="item">
+                <a href="/posts" target="_blank">
+                    <img src="images/AjaxBlog.png" alt="ThirdSlide" class="img-responsive slideImage">
+                </a>
+                <!--<div class="carousel-caption">-->
+                <!--<h3>AJAX Blog</h3>-->
+                <!--</div>-->
+            </div>
+
+            <div class="item">
+                <a href="weather_map.html" target="_blank">
+                    <img src="images/WeatherMap.png" alt="FourthSlide" class="img-responsive slideImage">
+                </a>
+                <!--<div class="carousel-caption">-->
+                    <!--<h3>API Weather Map</h3>-->
+                <!--</div>-->
+            </div>
+
+            <div class="item active">
+                <a href="SimonMemoryGame.html" target="_blank">
+                    <img src="images/SimonMemoryGame.png" alt="FifthSlide" class="img-responsive slideImage">
+                </a>
+                <!--<div class="carousel-caption">-->
+                    <!--<h3>Simon Memory Game</h3>-->
+                <!--</div>-->
+            </div>
+
+            <div class="item">
+                <a href="Coffee_Bean_Order_Form.html" target="_blank">
+                    <img src="images/CoffeeOrderForm.png" alt=SixthSlide" class="img-responsive slideImage"/>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- controls for next and prev buttons -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+
+    <!--<div class="row" id="Projects">-->
+        <!--<div class="col-xs-6 col-md-4" id="P1">-->
+            <!--<p>Tribute Page</p>-->
+            <!--<a href="http://localhost:63342/Codeup-web-exercises/TributePage.html?_ijt=alto2evts8754bi7jg8fie15t1" target="_blank"><img class="img-responsive" src="images/RidleyScottTribute.png"></a>-->
+        <!--</div>-->
+
+        <!--<div class="col-xs-6 col-md-4" id="P2">-->
+            <!--<p>JavaScript Calculator</p>-->
+            <!--<a href="http://localhost:63342/Codeup-web-exercises/CalculatorRevised.html?_ijt=6at7mh0and56lsfs2b8p4jpa39" target="_blank"><img class="img-responsive"  src="images/JavascriptCalculator.png"></a>-->
+        <!--</div>-->
+
+        <!--<div class="col-xs-6 col-md-4" id="P3">-->
+            <!--<p>AJAX Blog</p>-->
+            <!--<a href="http://localhost:63342/Codeup-web-exercises/ajax_blog.html?_ijt=q8q0l6b3h2h1i5q2uvc88i11il" target="_blank"><img class="img-responsive"  src="images/AjaxBlog.png"></a>-->
+        <!--</div>-->
+        <!--<div class="col-xs-6 col-md-4" id="P4">-->
+            <!--<p>API Weather Map</p>-->
+            <!--<a href="http://localhost:63342/Codeup-web-exercises/weather_map.html?_ijt=7tr3f2qq0bv2tcaovegg3fjgps" target="_blank"><img class="img-responsive" src="images/WeatherMap.png"></a>-->
+        <!--</div>-->
+        <!--<div class="col-xs-6 col-md-4" id="P5">-->
+            <!--<p>Simon Memory Game</p>-->
+            <!--<a href="http://localhost:63342/Simon_Game/SimonMemoryGame.html?_ijt=9usk3vtb5ugqo35l932amr11ga" target="_blank"><img class="img-responsive" src="images/SimonMemoryGame.png"></a>-->
+        <!--</div>-->
+        <!--<div class="col-xs-6 col-md-4" id="P6">-->
+            <!--<p>Project Placeholder</p>-->
+            <!--<a href="http://localhost:63342/Codeup-web-exercises/Coffee%20Bean%20Order%20Form.html?_ijt=alto2evts8754bi7jg8fie15t1" target="_blank"><img class="img-responsive"  src="https://www.whistler.com/images/placeholders/200x200.gif"></a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+
+<a id="contact-section"></a>
+
+    <div  class="container-fluid panels .col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0 col-md-12" id="Contact">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-4 col-md-4">
+                    <a href="https://www.linkedin.com/" target="_blank" class="social-media-link">
+                        <i class="fa fa-linkedin-square"></i>
+                    </a>
+                </div>
+
+                <div class="col-sm-4 col-md-4">
+                     <h3 id="ContactTitle">Contact Me</h3>
+                </div>
+
+                <div class="col-sm-4 col-md-4">
+                    <a href="https://github.com/HarpersGeekly" target="_blank" class="social-media-link">
+                        <i class="fa">&#xf09b;</i>
+                    </a>
+                </div>
+
+            <!--<div class="col-sm-6 col-md-4">-->
+                <!--<a href="http://www.piedpiper.com/" target="_blank" class="social-media-link">-->
+                    <!--<i class="fa fa-pied-piper" ></i>-->
+                <!--</a>-->
+
+            <!--</div>-->
+            </div>
+        </div>
+
+        <form method="post" action="harperryanc@gmail.com">
+            <div>
+                <label for="name"></label>
+                <input type="text" id="name" name="user_name" placeholder="Name">
+            </div>
+            <div>
+                <label for="mail"></label>
+                <input type="text" id="mail" name="user_email" placeholder="E-Mail">
+            </div>
+            <div>
+                <label for="msg"></label>
+                <textarea id="msg" name="user_message" placeholder="Message"></textarea>
+
+            </div>
+
+            <button type="submit" id="Submit">Send!</button>
+
+        </form>
+
+        <a href="#" class="scrollup"></a>
+
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/PortfolioPage.js"></script>
+</body>
+</html>
+
+

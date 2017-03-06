@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Map</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+    <style>
+
+        body {
+            /*background-color: #28a4c9;*/
+            background-image: url('/images/px_by_Gre3g.png');
+            height: 100%;
+        }
+
+        h1 {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 45px;
+            font-family: "Futura";
+            color: #faff96;
+        }
+
+        .date {
+            font-family: Avenir;
+            margin-top: 10px;
+            color: #555555;
+        }
+
+        .highLow {
+            font-family: "Futura";
+            font-size: 42px;
+        }
+        span {
+            font-size: 20px;
+            color: #555555;
+        }
+
+        .windSpeed {
+            color: #555555;
+        }
+
+        img {
+            width: 20%;
+        }
+
+        #cityName {
+            padding-top:10px;
+            text-align: center;
+            font-size: 30px;
+            font-family: Avenir;
+            font-weight: bold;
+            color: white;
+        }
+
+        #forecasts {
+            margin-right: 1.2%;
+        }
+
+        .forecastStructure {
+            background-color: #d2d2be;
+            border: 2px solid black;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            font-family: "Trebuchet";
+            padding: 5px;
+        }
+
+        #googleMap {
+            width: 100%;
+            height: 350px;
+            background-color: grey;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        #searchRow {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #search {
+            width: 20%;
+            font-size: 24px;
+            outline: none;
+            font-family: Avenir;
+        }
+        #selectDays {
+            text-align: center;
+            margin-top: -3.6%;
+            margin-left: 38%;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Weather Forecast</h1>
+<p id="cityName"></p>
+
+
+<div class="container">
+        <div class="row" id="forecasts"></div>
+
+        <div class="row" id="searchRow">
+            <form id="form1">
+                <input type="text" id="search" placeholder="Search City">
+                <input type="submit" hidden id="submit">
+            </form>
+        </div>
+        <div class="row" id="selectDays">
+            <form id="form2">
+                <select id="select">
+                    <option id="three" value="3">3 Day Forecast</option>
+                    <option id="six" value="6">6 Day Forecast</option>
+                </select>
+                <button id="submitDays">Submit</button>
+            </form>
+        </div>
+
+        <div class="row" id="googleMap"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdEhJIIBoaAFGkkOlpPjqJwRLgjQOKOfg&libraries=places"></script>
+<script>
+    (function() {
+        "use strict";
+// ========================================== GLOBAL VARIABLES ==========================================================
+
+        var lat = 29.42;
+        var lng = -98.49;
+        var count = 3;
+
+// ========================================== AJAX REQUEST: FORECAST DATA ===============================================
+
+    function getForecast() {
+        var openWeatherRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+            APPID: "6cde4ba95d87ed470cbe4870230de2d5",
+            lat: lat,
+            lon: lng,
+            units: "imperial",
+            cnt: count
+        });
+        openWeatherRequest.done(function (data) {
+
+            $("#forecasts").html(""); // clears out the html of this element as soon as the request is done. (The placement here prevents html flickering issue.)
+
+            var forecasts = []; // declare an empty array for objects.
+
+                data.list.forEach(function (object) { // with the data received, I created a function that takes in an object and created one with specific properties found in the console.
+                    var newForecast = {
+                        date: moment.unix(object.dt).format("dddd, MMM DD, YYYY"),
+                        high: object.temp.max,
+                        low: object.temp.min,
+                        imageIcon: object.weather[0].icon,
+                        typeCondition: object.weather[0].main,
+                        condition: object.weather[0].description,
+                        humidity: object.humidity,
+                        windSpeed: object.speed
+                    };
+                    forecasts.push(newForecast); // take the new object and place it in the array.
+                });
+
+            for (var i = 0; i < forecasts.length ; i++) { // loop through three (0,1,2) array objects and structure the content to look a specific way when placed in the html:
+
+                var generateForecastStructure = '<div class="forecastStructure col-md-4">'
+                        + '<p class="date">' + "Date: " + forecasts[i].date + '</p>'
+                        + '<p class="highLow">' + Math.round(forecasts[i].high) + "° " + '<span>' + Math.round(forecasts[i].low) + "° F" + '</span>' + '</p>'
+                        + '<img src="http://openweathermap.org/img/w/' + forecasts[i].imageIcon + '.png">'
+                        + '<p class="windSpeed">' + "Wind: " + Math.round(forecasts[i].windSpeed) + " mph" + '</p>' + '</div>';
+//                        + '<p class="typeCondition">' + forecasts[i].typeCondition + '</p>'
+//                        + '<p class="condition">' + "Expected: " + forecasts[i].condition + '</p>'
+//                        + '<p class="humidity">' + "Humidity: " + forecasts[i].humidity + "%" + '</p>'
+
+
+                $('#forecasts').append(generateForecastStructure); //insert the content at the end of the element with id "forecasts".
+                $('#cityName').html(data.city.name); // sets the content (innerHTML) of the element with id "cityName".
+            }
+        });
+    }
+    getForecast(); // wrap all this in a function to be used again.
+
+        // ============================= MAP FUNCTIONALITY ==============================================================
+
+        var newMap = function() {
+            var mapOptions = {
+                zoom: 6,
+                center: {
+                    lat: 29.424122,
+                    lng: -98.493629
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+
+        // ============================ MARKER FUNCTIONALITY ============================================================
+
+            var markerPosition = {
+                lat: 29.424122,
+                lng: -98.493629
+                };
+            var markerArray = [];
+            var marker = new google.maps.Marker({
+                position: markerPosition,
+                animation: google.maps.Animation.DROP,
+                map: map,
+                draggable: true
+                });
+            markerArray.push(marker);
+
+            function dragEnd(marker) {
+                google.maps.event.addListener(marker, 'dragend', function (evt) {
+                    lat = evt.latLng.lat();
+                    lng = evt.latLng.lng();
+                    getForecast();
+                });
+            }
+            dragEnd(marker);
+
+        // ==================================  INPUT FIELD AND SEARCH FOR NEW LOCATION ==================================
+
+            $("#form1").submit(function(e) {
+                e.preventDefault(); // this prevents the form from redirecting
+            });
+
+            $("#submit").click(function() {
+                var inputLocation = $('#search').val();
+
+                function inputNewMarker(location) {
+                    var newMarker = new google.maps.Marker({
+                        position: location,
+                        animation: google.maps.Animation.DROP,
+                        map: map,
+                        draggable: true
+                    });
+                    markerArray.push(newMarker);
+                    markerArray[0].setMap(null); //making the older marker invalid
+                    markerArray.shift(); // removing the old marker from the array
+                    dragEnd(newMarker);
+
+                }
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ "address": inputLocation }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                            // Recenter the map over the address
+                        map.setCenter(results[0].geometry.location);
+                        lat = results[0].geometry.location.lat();
+                        lng = results[0].geometry.location.lng();
+                        var myLatLng = {lat: lat, lng: lng};
+                        inputNewMarker(myLatLng);
+                        getForecast();
+                        $('#search').val('');
+                    } else {
+                        alert("Geocoding was not successful. Please enter a valid location.");
+                    }
+                });
+            });
+        };
+
+        $("#form2").submit(function(e) {
+            e.preventDefault(); // this prevents the form from redirecting
+        });
+
+        $('#submitDays').click(function () {
+           var result = $('#select').val();
+           count = result;
+            getForecast();
+        });
+        newMap();
+})();
+
+
+
+// ============================================ORIGINAL PSEUDO-CODE ====================================================
+
+    // get data. take specific data and turn it into an object. put object into a new array. loop through the array and display to div.
+    // create a map. drop a marker on a map. be able to drag that marker to a new spot and change the content within the div based on the new location.
+    // add a search input and ability to switch between 3 day forecast and 7 day forecast.
+
+</script>
+</body>
+</html>
+
+<!--// ========================= Change backgrounds to show weather effects ================================================-->
+
+<!--//                if(forecasts[i].typeCondition == "Clear") {-->
+<!--//                    $("#forecasts").children().css("background", "blue");-->
+<!--//                } else if (forecasts[i].typeCondition == "Rain"){-->
+<!--//                    $("#forecasts").children().css("background", "green");-->
+<!--//                } else if (forecasts[i].typeCondition == "Snow"){-->
+<!--//                    $("#forecasts").children().css("background", "pink");-->
+<!--//                } else if (forecasts[i].typeCondition == "Clouds") {-->
+<!--//                    $("#forecasts").children().css("background", "yellow");-->
+<!--//                }-->
