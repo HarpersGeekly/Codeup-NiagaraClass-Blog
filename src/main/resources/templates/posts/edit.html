@@ -24,13 +24,14 @@
             <label>Description:</label>
             <textarea type="text" id="body" name="body" class="form-control" th:field="*{body}"  style="width: 1140px; height: 300px; resize: none"></textarea>
         </div>
-            <input type="submit" value="Edit" class="btn btn-primary btn-block" />
+            <input th:if="${isEditable}" type="submit" value="Edit" class="btn btn-primary btn-block" />
     </form>
 
     <form th:action="@{'/posts/delete'}" th:method="POST" >
         <input type="hidden" name="id" th:value="${post.id}" />
-        <input type="submit" value="Delete" class="btn btn-primary btn-block btn-danger"/>
+        <input th:if="${isEditable}" type="submit" value="Delete" class="btn btn-primary btn-block btn-danger"/>
     </form>
+
 </div>
 </body>
 </html>

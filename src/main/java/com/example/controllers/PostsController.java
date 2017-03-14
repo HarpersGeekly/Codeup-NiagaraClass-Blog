@@ -52,7 +52,9 @@ public class PostsController {
 
     @GetMapping("/posts/{id}")
     public String viewSinglePost(@PathVariable long id, Model model) {
-        model.addAttribute("post", postsDao.findOne(id));
+        Post post = postsDao.findOne(id);
+        model.addAttribute("isEditable", usersSvc.isLoggedInAndPostMatchesUser(post.getUser()));
+        model.addAttribute("post", post);
         return "/posts/show"; // show.html
     }
 
@@ -101,6 +103,7 @@ public class PostsController {
     public String editPost(@PathVariable long id, @ModelAttribute Post post, Model model) {
 //        model.addAttribute("post", postsDao.findOne(id));
         Post editedPost = postsDao.findOne(id);
+        model.addAttribute("isEditable", usersSvc.isLoggedInAndPostMatchesUser(editedPost.getUser()));
         model.addAttribute("post", editedPost);
         return "/posts/edit";
     }

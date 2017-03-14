@@ -24,4 +24,12 @@ public class UserSvc {
         }
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
+
+    public boolean isLoggedInAndPostMatchesUser(User user) {
+        System.out.println(loggedInUser().getId());
+        System.out.println(user.getId());
+        System.out.println(loggedInUser().getId() == user.getId());
+        return loggedInUser().getId() == user.getId();
+    }
+
 }
