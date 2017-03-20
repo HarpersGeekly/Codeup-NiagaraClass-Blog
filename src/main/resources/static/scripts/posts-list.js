@@ -11,17 +11,23 @@
     });
 
     request.done(function (posts) { // the http response-> an array of JSON objects -> posts
-        console.log(posts);
+
 
         var i, html = '', $div = $("<div>");
         for(i = 0; i < posts.length; i++) {
-            var escapedBody = $div.text(posts[i].body).html();
+            console.log(posts[i]);
+            //var escapedBody = $div.text(posts[i].body).html();
             var escapeTitle = $div.text(posts[i].title).html();
+
+            // if the image url is not empty then don't display it'
+
+            // var ifImageIsHere = '<img src="/uploads/' + posts[i].image + '" alt="No image"/>' + '</br>';
+
             html += '<div>' +
                 '<h2 style="text-align: left">' + escapeTitle + '</h2>' +
-                '<h3 style="text-align: left">' + escapedBody + '</h3>' +
+                 posts[i].htmlBody +
 
-                // '<img src="/uploads/' + posts[i].image + '" alt="No image"/>' +
+                 // ifImageIsHere +
 
                 '<a class="btn btn-default" href="/posts/' + posts[i].id + '">Show</a>' +
                 '<h4 style="text-align: left">Created by: <a href="/users/' + posts[i].user.id + '">'

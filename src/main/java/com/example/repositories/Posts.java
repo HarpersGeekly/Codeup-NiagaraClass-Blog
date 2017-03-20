@@ -27,4 +27,7 @@ public interface Posts extends CrudRepository
 //    public List<Post> findWhereBodyLike(String body);
 // this is basically the Dao.
 // This Interface is going to be used in the Controller.
+
+
+
 }

@@ -1,6 +1,10 @@
 package com.example.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -26,6 +30,7 @@ public class Post {
     @NotBlank(message="Description cannot be empty :/")
     @Size(min = 5, message="Description must be at least 5 characters.")
     private String body;
+
 
     @Column
     private String image;
@@ -58,6 +63,13 @@ public class Post {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    @JsonProperty
+    public String getHtmlBody() {
+        Parser parser = Parser.builder().build();
+        HtmlRenderer renderer = HtmlRenderer.builder().build();
+        return renderer.render(parser.parse(body));
     }
 
     public String getTitle() {

@@ -4,6 +4,9 @@ import com.example.models.User;
 import com.example.repositories.Posts;
 import com.example.services.PostService;
 import com.example.services.UserSvc;
+import com.example.services.XSSPrevent;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +22,9 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
+
+
+
 
 /**
  * Created by RyanHarper on 2/7/17.
@@ -67,6 +73,7 @@ public class PostsController {
 
     @Value("${uploads}")
     private String uploadsPath;
+
     @PostMapping("/posts/create")
     public String createNewPost(
             @Valid Post post,
@@ -75,6 +82,7 @@ public class PostsController {
             // FILE UPLOAD FEATURE:
             @RequestParam(name = "image_file") MultipartFile uploadedFile) {
         // @Valid calls @ModelAttribute first and calls the validations!
+        System.out.println(post);
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("post", post);
@@ -94,6 +102,11 @@ public class PostsController {
         // ==========================
 
         post.setUser(usersSvc.loggedInUser());
+
+        XSSPrevent xp = new XSSPrevent();
+        xp.setAsText(post.getBody());
+        post.setBody(xp.getAsText());
+
         post.setImage(filename);
         postsDao.save(post);
         return "redirect:/posts";
@@ -110,6 +123,8 @@ public class PostsController {
 
     @PostMapping("/posts/{id}/edit")
     public String updatePost(@ModelAttribute Post editedPost) {
+        UserSvc service = new UserSvc();
+        editedPost.setUser(service.loggedInUser());
         postsDao.save(editedPost);
         return "redirect:/posts";
     }
@@ -126,4 +141,17 @@ public class PostsController {
         model.addAttribute("ListOfPosts", postsDao.findByTitleIsLikeOrBodyIsLike("%" + term + "%", "%" + term + "%"));
         return "posts/search";
     }
+
+    @GetMapping("/posts/body.json")
+    @ResponseBody
+    public String showContentInForm(@RequestParam(name = "content") String content) {
+        Parser parser = Parser.builder().build();
+        HtmlRenderer renderer = HtmlRenderer.builder().build();
+        return renderer.render(parser.parse(content));
+    }
+
+
 }
+
+
+

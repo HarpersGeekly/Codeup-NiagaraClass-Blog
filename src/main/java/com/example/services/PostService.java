@@ -1,6 +1,8 @@
 package com.example.services;
 
 import com.example.models.Post;
+import com.example.repositories.Posts;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Service("PostService")
 public class PostService {
+    @Autowired
+    Posts postsDao;
 
     private List<Post> posts = new ArrayList<>();
 
