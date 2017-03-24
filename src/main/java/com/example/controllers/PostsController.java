@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
@@ -122,10 +123,39 @@ public class PostsController {
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String updatePost(@ModelAttribute Post editedPost) {
-        UserSvc service = new UserSvc();
-        editedPost.setUser(service.loggedInUser());
-        postsDao.save(editedPost);
+    public String updatePost(@Valid Post post,
+                             Errors validation,
+                             Model model,
+                             // FILE UPLOAD FEATURE:
+                             @RequestParam(name = "image_file") MultipartFile uploadedFile) {
+        // @Valid calls @ModelAttribute first and calls the validations!
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("post", post);
+            return "/posts/create";
+        }
+        // FILE UPLOAD FEATURE: =====
+        //unix based : mac, linux -> the folder for temporary files is always /tmp
+        //kadsadja12334
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadsPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile); // moves file in this step
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // ==========================
+
+        post.setUser(usersSvc.loggedInUser());
+
+        XSSPrevent xp = new XSSPrevent();
+        xp.setAsText(post.getBody());
+        post.setBody(xp.getAsText());
+
+        post.setImage(filename);
+        postsDao.save(post);
+
         return "redirect:/posts";
     }
 
@@ -148,6 +178,16 @@ public class PostsController {
         Parser parser = Parser.builder().build();
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         return renderer.render(parser.parse(content));
+    }
+
+    @PostMapping("posts/image/delete")
+    public String deleteImage(@RequestParam(name = "id") Long id) throws IOException {
+        Post post = postsDao.findOne(id);
+        String path = uploadsPath + "/" + post.getImage();
+        post.setImage(null);
+        postsDao.save(post);
+        Files.delete(Paths.get(path));
+        return "redirect:/posts/" + id + "/edit";
     }
 
 
