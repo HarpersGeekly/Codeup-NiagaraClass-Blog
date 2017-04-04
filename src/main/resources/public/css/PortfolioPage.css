@@ -46,7 +46,7 @@
 
 #myName {
     width: 100%;
-    font-family: "Big Caslon";
+    font-family: 'PT Serif', serif;
     font-size: 2.5rem;
     color: black;
     letter-spacing: 17px;
@@ -104,7 +104,7 @@
 }
 
 #myNumberEmail {
-    font-family: Futura;
+    font-family: Avenir;
     font-size: 24px;
     color: black;
 }
@@ -120,6 +120,15 @@
     text-align: center;
 }
 
+#linkToResume a:hover {
+    text-decoration: none;
+    color: #3c6985;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
 /*#ResumeTitle {*/
     /*text-align: center;*/
     /*font-family: Georgia;*/
@@ -128,7 +137,7 @@
 /*}*/
 
 .workAndSchool {
-    font-family: Futura;
+    font-family: 'PT Serif', serif;
     font-size: 28px;
 }
 .pWorkAndSchool {
@@ -211,7 +220,7 @@
 #ContactTitle {
     padding-top: 10px;
     color: whitesmoke;
-    font-family: "Big Caslon";
+    font-family: 'PT Serif', serif;
     letter-spacing: 13px;
     font-size: 40px;
 }
