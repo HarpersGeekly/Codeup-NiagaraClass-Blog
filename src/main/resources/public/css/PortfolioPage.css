@@ -97,6 +97,7 @@
 }
 
 #Hello {
+    margin: 50px;
     text-align: center;
     font-family: Avenir;
     font-size: 20px;
