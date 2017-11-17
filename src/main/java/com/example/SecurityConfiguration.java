@@ -51,7 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 // restricted area
                     .authorizeRequests()
-                    .antMatchers("/posts/create", "/posts/edit") // only authenticated users can create posts
+                    .antMatchers("/posts/create", "/posts/{id}/edit") // only authenticated users can create posts
                     .authenticated()
         ;
     }

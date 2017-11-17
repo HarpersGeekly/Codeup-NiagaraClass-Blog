@@ -31,13 +31,12 @@ public class Post {
     @Size(min = 5, message="Description must be at least 5 characters.")
     private String body;
 
-
     @Column
     private String image;
 
     @ManyToOne
     // will define the foreign key. This class represents the post table and we need a reference to the user
-    // The convention is "the_other_table_name_id"
+    // The convention is "thetherTableName_id"
     @JoinColumn(name = "user_id") // Define at the Table Level.  Lots of posts can have one "user"
     @JsonManagedReference
     private User user; // this is the owner/author/poster, etc.

@@ -19,7 +19,7 @@
         <h2 th:text="*{title}"></h2>
         <h3 th:utext="*{htmlBody}"></h3>
 
-        <img th:if="${post.image != null}" th:src="${'/uploads/' + post.image}"  alt="No image" />
+        <!--<img th:if="${post.image != null}" th:src="${'/uploads/' + post.image}"  alt="" />-->
 
         <h4>Created by: <a th:href="${'/users/' + post.user.id}"
                                                     th:text="${post.user.username}"></a></h4>

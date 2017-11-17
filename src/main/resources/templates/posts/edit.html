@@ -49,24 +49,29 @@
             </div>
         </div>
 
-        <div th:if="${post.image == null}" class="form-group">
-            <label for="file">Upload a file!</label>
-            <input id="file" name="image_file" type="file" />
-        </div>
+        <!--<div th:if="${post.image == null}" class="form-group">-->
+            <!--<label for="file">Upload a file!</label>-->
+            <!--<input id="file" name="image_file" type="file" />-->
+        <!--</div>-->
+
+        <!--<div class="form-group">-->
+            <!--<label for="file">Upload a file!</label>-->
+            <!--<input id="file" name="image_file" type="file" />-->
+        <!--</div>-->
 
             <input th:if="${isEditable}" type="submit" value="Edit" class="btn btn-primary btn-block" />
     </form>
 
 
-    <form th:if="${post.image != null}" th:action="@{'/posts/image/delete'}" th:method="POST" >
-        <input type="hidden" name="id" th:value="${post.id}" />
-        <img th:src="${'/uploads/' + post.image}"  alt="No image" />
-        <input th:if="${isEditable}" type="submit" value="Delete Image" class="btn btn-primary btn-block btn-danger"/>
-    </form>
+    <!--<form th:if="${post.image != null}" th:action="@{'/posts/image/delete'}" th:method="POST" >-->
+        <!--<input type="hidden" name="id" th:value="${post.id}" />-->
+        <!--<img th:src="${'/uploads/' + post.image}"  alt="" />-->
+        <!--<input th:if="${isEditable}" type="submit" value="Delete Image" class="btn btn-primary btn-block btn-danger"/>-->
+    <!--</form>-->
 
     <form th:action="@{'/posts/delete'}" th:method="POST" >
         <input type="hidden" name="id" th:value="${post.id}" />
-        <input th:if="${isEditable}" type="submit" value="Delete" class="btn btn-primary btn-block btn-danger"/>
+        <input th:if="${isEditable}" type="submit" value="Delete Entire Post" class="btn btn-primary btn-block btn-danger"/>
     </form>
 
 </div>

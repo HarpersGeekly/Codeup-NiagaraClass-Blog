@@ -58,7 +58,7 @@ public class PostsController {
     }
 
     @GetMapping("/posts/{id}")
-    public String viewSinglePost(@PathVariable long id, Model model) {
+    public String viewSinglePost(@PathVariable Long id, Model model) {
         Post post = postsDao.findOne(id);
         model.addAttribute("isEditable", usersSvc.isLoggedInAndPostMatchesUser(post.getUser()));
         model.addAttribute("post", post);
@@ -79,9 +79,9 @@ public class PostsController {
     public String createNewPost(
             @Valid Post post,
             Errors validation,
-            Model model,
+            Model model
             // FILE UPLOAD FEATURE:
-            @RequestParam(name = "image_file") MultipartFile uploadedFile) {
+            /*@RequestParam(name = "image_file") MultipartFile uploadedFile*/) {
         // @Valid calls @ModelAttribute first and calls the validations!
         System.out.println(post);
         if (validation.hasErrors()) {
@@ -91,15 +91,14 @@ public class PostsController {
         }
         // FILE UPLOAD FEATURE: =====
         //unix based : mac, linux -> the folder for temporary files is always /tmp
-        //kadsadja12334
-        String filename = uploadedFile.getOriginalFilename();
-        String filepath = Paths.get(uploadsPath, filename).toString();
-        File destinationFile = new File(filepath);
-        try {
-            uploadedFile.transferTo(destinationFile); // moves file in this step
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        String filename = uploadedFile.getOriginalFilename();
+//        String filepath = Paths.get(uploadsPath, filename).toString();
+//        File destinationFile = new File(filepath);
+//        try {
+//            uploadedFile.transferTo(destinationFile); // moves file in this step
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         // ==========================
 
         post.setUser(usersSvc.loggedInUser());
@@ -108,13 +107,14 @@ public class PostsController {
         xp.setAsText(post.getBody());
         post.setBody(xp.getAsText());
 
-        post.setImage(filename);
+//        post.setImage(filename);
         postsDao.save(post);
         return "redirect:/posts";
     }
 
+
     @GetMapping("/posts/{id}/edit")
-    public String editPost(@PathVariable long id, @ModelAttribute Post post, Model model) {
+    public String showEditPostPage(@PathVariable Long id, Model model) {
 //        model.addAttribute("post", postsDao.findOne(id));
         Post editedPost = postsDao.findOne(id);
         model.addAttribute("isEditable", usersSvc.isLoggedInAndPostMatchesUser(editedPost.getUser()));
@@ -126,8 +126,9 @@ public class PostsController {
     public String updatePost(@Valid Post post,
                              Errors validation,
                              Model model,
+                             @PathVariable Long id
                              // FILE UPLOAD FEATURE:
-                             @RequestParam(name = "image_file") MultipartFile uploadedFile) {
+                             /*@RequestParam(name = "image_file") MultipartFile uploadedFile*/) {
         // @Valid calls @ModelAttribute first and calls the validations!
         if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
@@ -137,25 +138,27 @@ public class PostsController {
         // FILE UPLOAD FEATURE: =====
         //unix based : mac, linux -> the folder for temporary files is always /tmp
         //kadsadja12334
-        String filename = uploadedFile.getOriginalFilename();
-        String filepath = Paths.get(uploadsPath, filename).toString();
-        File destinationFile = new File(filepath);
-        try {
-            uploadedFile.transferTo(destinationFile); // moves file in this step
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        String filename = uploadedFile.getOriginalFilename();
+//        String filepath = Paths.get(uploadsPath, filename).toString();
+//        File destinationFile = new File(filepath);
+//        try {
+//            uploadedFile.transferTo(destinationFile); // moves file in this step
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         // ==========================
 
+
+//        post.setImage(filename);
+
+        post.setId(id);
         post.setUser(usersSvc.loggedInUser());
 
         XSSPrevent xp = new XSSPrevent();
         xp.setAsText(post.getBody());
         post.setBody(xp.getAsText());
 
-        post.setImage(filename);
         postsDao.save(post);
-
         return "redirect:/posts";
     }
 
@@ -180,15 +183,15 @@ public class PostsController {
         return renderer.render(parser.parse(content));
     }
 
-    @PostMapping("posts/image/delete")
-    public String deleteImage(@RequestParam(name = "id") Long id) throws IOException {
-        Post post = postsDao.findOne(id);
-        String path = uploadsPath + "/" + post.getImage();
-        post.setImage(null);
-        postsDao.save(post);
-        Files.delete(Paths.get(path));
-        return "redirect:/posts/" + id + "/edit";
-    }
+//    @PostMapping("posts/image/delete")
+//    public String deleteImage(@RequestParam(name = "id") Long id) throws IOException {
+//        Post post = postsDao.findOne(id);
+//        String path = uploadsPath + "/" + post.getImage();
+//        post.setImage(null);
+//        postsDao.save(post);
+//        Files.delete(Paths.get(path));
+//        return "redirect:/posts/" + id + "/edit";
+//    }
 
 
 }
