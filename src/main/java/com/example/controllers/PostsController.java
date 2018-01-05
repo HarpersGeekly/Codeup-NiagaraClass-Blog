@@ -48,7 +48,9 @@ public class PostsController {
 
     @GetMapping("/posts")
     public String viewAllPosts(Model model) {
-        model.addAttribute("ListOfPosts", Collections.emptyList()); /*postsDao.findAll());*/
+//        model.addAttribute("ListOfPosts", Collections.emptyList()); <-- /*postsDao.findAll());*/
+        // No longer needed now that I'm using /posts.json and an ajax request.
+        // BUT, I still need to display a view.
         return "/posts/index";
     }
 
@@ -72,8 +74,8 @@ public class PostsController {
         return "/posts/create";
     }
 
-    @Value("${uploads}")
-    private String uploadsPath;
+//    @Value("${uploads}")
+//    private String uploadsPath;
 
     @PostMapping("/posts/create")
     public String createNewPost(
