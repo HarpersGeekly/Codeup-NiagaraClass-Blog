@@ -97,11 +97,15 @@
 }
 
 #Hello {
-    margin: 50px;
-    text-align: center;
+    margin: 2em auto 1em;
+    width: 75%;
+    text-align: justify;
+    text-indent: 4%;
     font-family: Avenir;
-    font-size: 20px;
-    color: white;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    font-size: 1.30em;
+    color: #e8e8e8;
 }
 
 #myNumberEmail {
@@ -142,6 +146,7 @@
     font-size: 28px;
 }
 .pWorkAndSchool {
+
     font-family: Avenir;
     font-size: 20px;
 }
