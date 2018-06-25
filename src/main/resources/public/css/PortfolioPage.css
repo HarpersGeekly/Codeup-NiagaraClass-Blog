@@ -66,7 +66,7 @@
     -webkit-animation-timing-function: linear;
 }
 
-#About {
+#about {
     z-index: -999;
     min-height: 500px;
     text-align: center;
@@ -96,7 +96,7 @@
     background-size: cover;
 }
 
-#Hello {
+#hello {
     margin: 2em auto 1em;
     width: 75%;
     text-align: justify;
@@ -114,7 +114,7 @@
     color: black;
 }
 
-#Resume {
+#resume {
     position: relative;
     z-index: 500;
     background: url("../images/paper_fibers.png");
@@ -214,16 +214,16 @@
     opacity: 1;
 }
 
-#Contact {
+#contact {
     padding-top: 12px;
     text-align: center;
-    background: url("../images/tweed.png") fixed;
+    background: url("../images/tweed.png");
     /*background-color: #3b5a92;*/
     /*height: 91vh;*/
 
 }
 
-#ContactTitle {
+#contactTitle {
     padding-top: 10px;
     color: whitesmoke;
     font-family: 'PT Serif', serif;
