@@ -13,9 +13,10 @@
 
 <body>
 
+<div id="profile-page-wrapper">
     <nav class="navbar navbar-default navbar-fixed-top">
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#theNavbarWords">
@@ -29,8 +30,8 @@
 
             </div>
 
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right" id="theNavbarWords">
+            <div class="collapse navbar-collapse" id="theNavbarWords">
+                <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about-section" class="sliding-link">About</a></li>
                     <li><a href="#resume-section" class="sliding-link">Resume</a></li>
                     <li><a href="#portfolio-section" class="sliding-link">Portfolio</a></li>
@@ -48,13 +49,18 @@
 <!--"container-fluid" fills the width of the screen, container has margins -->
     <div class="container-fluid panels" id="about">
         <div id="myPortrait" class="cropCircle"></div>
-        <h3 id="Hello">Hello! I'm Ryan Harper. I'm a full-stack web developer and technical teaching assistant at Codeup in San Antonio, Texas.
-            I've built real-world projects and learned curriculum in Java, Spring, MySQL, JavaScript, API integrations, jQuery, CSS3, HTML5, and Git.
-            I'm looking for roles in back-end Java Development or UI/UX. At the end of the day, it's all about making customers extra happy so they can "get to the thing" with ease and trust.
-            I have 8+ years experience in customer support, management, and sales. This is an exciting career shift and I'm convinced I can excel in an entry-level position in software development.
-            Thanks for visiting, and let's connect!
+        <h3 id="hello">
+            <p>Hello! I'm Ryan Harper. I'm a full-stack web developer and technical teaching assistant at Codeup in San Antonio, Texas.</p>
+            <p>I've built real-world projects and learned curriculum in Java, Spring, MySQL, JavaScript, API integrations, jQuery, CSS3, HTML5, and Git.</p>
+            <p>I have 8+ years experience in customer support, management, and sales. I'm looking for roles in back-end Java Development or UI/UX. It's all about making customers extra happy so they can "get to the thing" with ease and trust.</p>
+            <p>This is an exciting career shift and I'm convinced I can excel in an entry-level position in software development.
+                Thanks for visiting, and let's connect!</p>
         </h3>
-        <p id="myNumberEmail">210.602.3618  |  HarperRyanC@gmail.com | <a style="color: black;" href="https://drive.google.com/file/d/1_MnSofcOAAasq_FEgZ7lDZ6J60Jn-Wnm/view?usp=sharing" target="_blank">Resume</a></p>
+        <div id="myNumberEmail">
+            <p id="myNumberEmail-phone">210.602.3618</p>
+            <p id="myNumberEmail-email">HarperRyanC@gmail.com</p>
+            <a id="myNumberEmail-resume" href="https://drive.google.com/file/d/1_MnSofcOAAasq_FEgZ7lDZ6J60Jn-Wnm/view?usp=sharing" target="_blank">Resume</a>
+        </div>
     </div>
 
 <a id="resume-section"></a>
@@ -263,9 +269,20 @@
 
     </div>
 </div>
+</div>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/PortfolioPage.js"></script>
+<script>
+    $(document).click(function (event) {
+        var clickover = $(event.target);
+        var $navbar = $(".navbar-collapse");
+        var _opened = $navbar.hasClass("in");
+        if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+            $navbar.collapse('hide');
+        }
+    });
+</script>
 </body>
 </html>
 

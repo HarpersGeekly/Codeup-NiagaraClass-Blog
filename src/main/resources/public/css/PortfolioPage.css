@@ -53,6 +53,7 @@
 }
 
 #theNavbarWords {
+    background: url("../images/brickwall.png");
     padding-top: 5px;
     font-family: Avenir;
     font-size: 16px;
@@ -72,10 +73,10 @@
     text-align: center;
     margin-top: 65px;
     padding-bottom: 50px;
-    background: #558883;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    /*background: #667d7b no-repeat fixed center;*/
+    background: #558883 no-repeat fixed center;
+    /*background: #363946 no-repeat fixed center;*/
+    /*background: #3c6985 no-repeat fixed center;*/
     background-size: cover;
 }
 
@@ -97,20 +98,31 @@
 }
 
 #hello {
-    margin: 2em auto 1em;
-    width: 75%;
-    text-align: justify;
-    text-indent: 4%;
-    font-family: Avenir;
+    width: 60%;
+    color: #E8E8E8;
+    /*line-height: 1.3;*/
     letter-spacing: 1px;
-    line-height: 1.4;
-    font-size: 1.30em;
-    color: #e8e8e8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin: 0 auto 1em;
 }
 
 #myNumberEmail {
-    font-family: Avenir;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
     font-size: 24px;
+    color: black;
+}
+
+#myNumberEmail-email {
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+}
+
+#myNumberEmail-resume {
+    text-decoration: underline;
     color: black;
 }
 
@@ -324,4 +336,71 @@ input[type="text"].focus {
     display: none;
     text-indent: -9999px;
     background: url('../images/codeup-arrow.png') transparent;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    #myName {
+        width: 100%;
+        font-family: 'PT Serif', serif;
+        font-size: 2.5rem;
+        color: black;
+        letter-spacing: 10px;
+        text-align: center;
+    }
+
+    #myPortrait {
+        width: 200px;
+        height: 200px;
+    }
+
+    .cropCircle {
+        margin: 50px auto 30px auto;
+    }
+
+    #hello {
+        width: 100%;
+        line-height: 1.3;
+        letter-spacing: 1px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.25em;
+        text-align: left;
+    }
+
+    #about {
+        padding-bottom: 25px;
+    }
+
+    #myNumberEmail {
+        display: block;
+        justify-content: center;
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        color: black;
+    }
+
+    #contactTitle {
+        font-size: 2em;
+    }
+
+    .pWorkAndSchool {
+        margin-bottom: 1.5em;
+    }
+
+    .workAndSchool {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .social-media-link {
+        font-size: 60px;
+    }
+
+    .scrollup {
+        margin-right: -5em;
+        margin-bottom: -2em;
+    }
+
+
+
 }
