@@ -154,11 +154,10 @@
 /*}*/
 
 .workAndSchool {
-    font-family: 'PT Serif', serif;
-    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
 }
 .pWorkAndSchool {
-
     font-family: Avenir;
     font-size: 20px;
 }
@@ -390,6 +389,7 @@ input[type="text"].focus {
 
     .workAndSchool {
         font-family: 'Roboto', sans-serif;
+        font-size: 24px;
     }
 
     .social-media-link {
