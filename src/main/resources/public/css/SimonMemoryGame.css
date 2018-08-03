@@ -21,14 +21,17 @@ body {
     font-family: 'VT323', monospace;
     text-align: center;
     font-size: 30px;
-    color: white;
+    color: aliceblue;
 }
-.container {
-    margin-top: 30px;
+.grid-container {
+    display: grid;
+    justify-content: center;
 }
-.row {
-    margin-left: 32%;
+
+#form1 {
+    text-align: center;
 }
+
 .square {
     opacity: 0.6;
 }
@@ -68,7 +71,7 @@ body {
     margin-top: 10px;
     margin-left: 10px;
     padding: 5px;
-    width: 25%;
+    width: 10%;
     border-radius: 20px;
     font-family: 'VT323', monospace;
     font-weight: bold;
@@ -82,10 +85,6 @@ body {
     animation: pulse infinite 1s;
 }
 
-#buttonAndSelector {
-    margin-left: 32.5%;
-}
-
 #select {
     outline: none;
     background-color: #ffcde8;
@@ -97,7 +96,7 @@ body {
     font-size: 50px;
     font-family: 'VT323', monospace;
     /*margin-left: 44%;*/
-    color: white;
+    color: aliceblue;
     /*margin-left: 35%;*/
 
 }
@@ -108,7 +107,40 @@ body {
 #highScoreHeader, #highScore {
     font-family: 'VT323', monospace;
     font-size: 50px;
-    color: white;
+    color: aliceblue;
     /*margin-left: 20%;*/
     clear: right;
+}
+
+@media screen and (max-width: 600px) {
+
+    .grid-container {
+        grid-template-columns: auto auto;
+    }
+
+    .title {
+        font-size: 45px;
+    }
+
+    #ask {
+        font-size: 25px;
+    }
+
+    .square {
+        height: 150px;
+        width: 150px;
+    }
+
+    #play {
+        width: 40%;
+    }
+
+    #level {
+        font-size: 30px;
+    }
+
+    #highScoreHeader {
+        font-size: 30px;
+    }
+
 }

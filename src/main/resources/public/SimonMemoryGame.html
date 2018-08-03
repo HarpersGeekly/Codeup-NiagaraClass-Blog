@@ -10,23 +10,22 @@
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
 </head>
 <body>
-<h1 class="title">Simon Memory Game.</h1>
-<p id="ask">Would you like to play?</p>
 
-<div class="container">
+    <h1 class="title">Simon Memory Game.</h1>
+    <p id="ask">Would you like to play?</p>
 
-    <div class="row">
-        <div class="square col-md-6 red"></div>
-        <div class="square col-md-6 green"></div>
+    <div class="grid-container">
+        <div>
+            <div class="square col-md-6 red"></div>
+            <div class="square col-md-6 green"></div>
+        </div>
+        <div>
+            <div class="square col-md-6 blue"></div>
+            <div class="square col-md-6 yellow"></div>
+        </div>
     </div>
 
-    <div class="row">
-        <div class="square col-md-6 blue"></div>
-        <div class="square col-md-6 yellow"></div>
-    </div>
-
-    <div class="row" id="buttonAndSelector">
-
+    <div id="buttonAndSelector">
         <form id="form1">
             <button id="play" type="submit">PLAY</button>
             <select id="select">
@@ -35,7 +34,7 @@
             </select>
         </form>
     </div>
-</div>
+
 
 <div class="levelAndHighScoreDiv col-md-6">
 
