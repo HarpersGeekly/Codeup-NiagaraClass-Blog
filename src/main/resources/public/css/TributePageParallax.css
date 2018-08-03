@@ -28,7 +28,7 @@ body, html {
     color: #000;
 }
 
-.caption span.border {
+.caption span.title {
     /*background-color: #111;*/
     color: #e2984c;
     /*color: #ac2020;*/
@@ -39,7 +39,7 @@ body, html {
     /*letter-spacing: 10px;*/
 }
 
-#mainQuote {
+.mainQuote {
     font-family: Playfair Display;
     font-size: 4rem;
     color: #e4fcff;
@@ -49,12 +49,24 @@ body, html {
     text-shadow: 2px 2px black;
 }
 
+.early-life-section {
+    color: #777;
+    background-color: white;
+    text-align:center;
+}
+
 #timeLine {
     padding-top: 10px;
     text-align: center;
     font-family: Futura;
     font-size: 2rem;
     list-style-type: none;
+}
+
+.film-career-section {
+    color:#ddd;
+    background-color:#282E34;
+    text-align:center;
 }
 
 h3 {
@@ -71,12 +83,11 @@ h3 {
     margin-bottom: 30px;
     font-family: Avenir;
     font-size: 2rem;
-    margin-left: 20px;
     text-align: left;
 }
 
 .bgimg-2 {
-    background-image: url("http://images.dailytech.com/nimage/Ridley_Scott_Wide.jpg");
+    background-image: url("http://www.tripwiremagazine.co.uk/wp-content/uploads/2018/03/ridley_scott.jpg");
     min-height: 600px;
 }
 
@@ -86,6 +97,17 @@ h3 {
     font-size: 22px;
     text-align: left;
 }
+.movie-title-wrapper {
+    position: relative;
+}
+
+.movie-title-div {
+    color:#ddd;
+    background-color:#282E34;
+    text-align:center;
+    padding:10px 10px;
+}
+
 .movieTitle {
     padding: 20px;
     margin-bottom: 0px;
@@ -153,7 +175,7 @@ h3 {
 }
 
 #infoFooter {
-    margin-top: 25%;
+    margin-top: 20%;
     color: white;
     font-size: 20px;
     text-shadow: 1px 1px black;
@@ -161,35 +183,128 @@ h3 {
     font-family: Avenir;
 }
 
-#IMDB {
-    background-color: #f3ce13;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 0px solid #000;
-    box-shadow: 2px 2px #000000
+/*#imdb {*/
+    /*background-color: #f3ce13;*/
+    /*height: 30px;*/
+    /*width: 30px;*/
+    /*border-radius: 50%;*/
+    /*border: 0px solid #000;*/
+    /*box-shadow: 2px 2px #000000*/
+/*}*/
+
+/*#wiki {*/
+    /*background-color: #f5f5f5;*/
+    /*height: 30px;*/
+    /*width: 30px;*/
+    /*border-radius: 50%;*/
+    /*border: 0px solid #000;*/
+    /*box-shadow: 2px 2px #000000*/
+/*}*/
+
+/*#twitter {*/
+/*background-color: #00aced;*/
+/*height: 30px;*/
+/*width: 30px;*/
+/*border-radius: 50%;*/
+/*border: 0px solid #000;*/
+/*box-shadow: 2px 2px #000000*/
+/*}*/
+
+.social-icons-wrapper {
+    text-decoration: none;
 }
 
-#Wiki {
-    background-color: #f5f5f5;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 0px solid #000;
-    box-shadow: 2px 2px #000000
-}
-#Twitter {
-    background-color: #00aced;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 0px solid #000;
-    box-shadow: 2px 2px #000000
+.social-icon-link {
+    padding: 0.75em;
 }
 
+.imdb-icon:hover, .w-icon:hover, .t-icon {
+    text-decoration: none;
+}
+
+a:hover, a:focus, a:active, a:visited, a:link{
+    text-decoration: none;
+}
+
+.imdb-icon {
+    color:#f3ce13;
+}
+
+.w-icon {
+    color: white;
+}
+
+.t-icon {
+    color: #00aced;
+}
+
+.bgimg-1m, .bgimg-2m, .bgimg-3m, .bgimg-4m, .bgimg-5m, .bgimg-6m, .bgimg-7m, .bgimg-8m, .bgimg-9m, .bgimg-10m  {
+    display: none;
+}
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1024px) {
-    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9  {
+    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg10  {
         background-attachment: scroll;
     }
+}
+
+@media screen and (max-width: 600px) {
+
+    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg10  {
+        display: none;
+    }
+
+    .bgimg-1m, .bgimg-2m, .bgimg-3m, .bgimg-4m, .bgimg-5m, .bgimg-6m, .bgimg-7m, .bgimg-8m, .bgimg-9m, .bgimg-10m  {
+        display:block;
+        width: 100%;
+        height: auto;
+    }
+
+    .caption span.title {
+        font-size: 2.75em;
+    }
+
+    .mainQuote {
+        font-size: 1.3em;
+        color: #e4fcff;
+        margin-top: 25%;
+    }
+
+    #timeLine {
+        font-size: 1.20em;
+    }
+
+    .timeLineQuote {
+        color: black;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-family: Avenir;
+        font-size: 1.20em;
+        text-align: left;
+    }
+
+    #filmCareer {
+        /*width: 80%;*/
+        margin: 0 auto;
+        /* margin: 30px; */
+        font-family: Avenir;
+        font-size: 1.20em;
+        text-align: left;
+    }
+
+    .movieTitle {
+        padding: 0px;
+        font-size: 20px;
+    }
+
+    #lastQuote {
+        font-size: 1.5em;
+        margin-top: 90%;
+    }
+
+    #infoFooter {
+        margin-top: 40%;
+    }
+
+
 }
