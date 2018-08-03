@@ -116,6 +116,13 @@ h3 {
     font-weight: bold;
 }
 
+.movieSynopsis {
+    margin: 15px 30px 1em;
+    font-family: Avenir;
+    font-size: 22px;
+    text-align: left;
+}
+
 /*ALIEN https://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/t/56054a09e4b0612d66a925c3/1443187210703/*/
 /*https://skinwalker.files.wordpress.com/2013/01/vlcsnap-2013-01-20-16h51m57s34.png*/
 .bgimg-3 {
@@ -308,6 +315,13 @@ a:hover, a:focus, a:active, a:visited, a:link{
     .movieTitle {
         padding: 0px;
         font-size: 20px;
+    }
+
+    .movieSynopsis {
+        margin: 0 auto 1em;
+        font-family: Avenir;
+        font-size: 1.20em;
+        text-align: left;
     }
 
     .lastQuote {
