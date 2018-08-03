@@ -68,6 +68,7 @@ body {
     /*animation: #0000FF;*/
 }
 #play {
+    background-color: #558883;
     margin-top: 10px;
     margin-left: 10px;
     padding: 5px;
@@ -80,14 +81,14 @@ body {
     margin-right: 40px;
 }
 #play:hover {
-    background-color: #23ff78;
+    background-color: #558883;
     -webkit-animation: pulse infinite 1s;
     animation: pulse infinite 1s;
 }
 
 #select {
     outline: none;
-    background-color: #ffcde8;
+    background-color: papayawhip;
     font-family: 'VT323', monospace;
     font-size: 20px;
 }
@@ -133,6 +134,12 @@ body {
 
     #play {
         width: 40%;
+        background-color: #558883;
+    }
+
+    #select {
+        outline: none;
+        background-color: papayawhip;
     }
 
     #level {
