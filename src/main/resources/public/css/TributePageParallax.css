@@ -92,7 +92,7 @@ h3 {
 }
 
 #filmCareer {
-    margin: 30px;
+    margin: 30px 30px 1em;
     font-family: Avenir;
     font-size: 22px;
     text-align: left;
@@ -163,7 +163,7 @@ h3 {
     min-height: 800px;
 }
 
-#lastQuote {
+.lastQuote {
     font-family: Avenir;
     font-size: 3rem;
     color: #e4fcff;
@@ -174,8 +174,8 @@ h3 {
     text-align: left;
 }
 
-#infoFooter {
-    margin-top: 20%;
+.infoFooter {
+    margin-top: 18%;
     color: white;
     font-size: 20px;
     text-shadow: 1px 1px black;
@@ -210,6 +210,10 @@ h3 {
 /*box-shadow: 2px 2px #000000*/
 /*}*/
 
+.footer-mobile {
+    display:none;
+}
+
 .social-icons-wrapper {
     text-decoration: none;
 }
@@ -243,14 +247,14 @@ a:hover, a:focus, a:active, a:visited, a:link{
 }
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1024px) {
-    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg10  {
+    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg-10  {
         background-attachment: scroll;
     }
 }
 
 @media screen and (max-width: 600px) {
 
-    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg10  {
+    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg-10  {
         display: none;
     }
 
@@ -258,6 +262,11 @@ a:hover, a:focus, a:active, a:visited, a:link{
         display:block;
         width: 100%;
         height: auto;
+    }
+
+    .footer-mobile {
+        display:block;
+        background-image: url("../images/tweed.png");
     }
 
     .caption span.title {
@@ -285,7 +294,7 @@ a:hover, a:focus, a:active, a:visited, a:link{
 
     #filmCareer {
         /*width: 80%;*/
-        margin: 0 auto;
+        margin: 0 auto 1em;
         /* margin: 30px; */
         font-family: Avenir;
         font-size: 1.20em;
@@ -297,13 +306,17 @@ a:hover, a:focus, a:active, a:visited, a:link{
         font-size: 20px;
     }
 
-    #lastQuote {
+    .lastQuote {
         font-size: 1.5em;
-        margin-top: 90%;
+        /*margin-top: 90%;*/
+        margin-top: 10%;
+        color: aliceblue;
+        text-shadow: none;
     }
 
-    #infoFooter {
-        margin-top: 40%;
+    .infoFooter {
+        /*margin-top: 40%;*/
+        margin-top: 20%;
     }
 
 
