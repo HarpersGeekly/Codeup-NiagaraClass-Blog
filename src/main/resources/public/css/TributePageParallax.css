@@ -26,11 +26,15 @@ body, html {
     color: #000;
 }
 
-.caption span.title {
+.title {
     color: goldenrod;
     font-family: Audiowide;
     font-size: 8.5em;
     text-shadow: 2px 2px black;
+}
+
+.title-m {
+    display: none;
 }
 
 .mainQuote {
@@ -79,6 +83,9 @@ h3 {
     font-family: Avenir;
     font-size: 2rem;
     text-align: left;
+}
+.timeLineQuote-m {
+    display: none;
 }
 
 .bg-img-secondary {
@@ -277,14 +284,19 @@ a:hover, a:focus, a:active, a:visited, a:link{
         background-image: url("../images/tweed.png");
     }
 
-    .caption span.title {
+    .title-m {
+        margin-top: 45%;
+        display: block;
+        font-family: Audiowide;
         font-size: 2.75em;
+        color: goldenrod;
+        text-shadow: 2px 2px black;
     }
 
     .mainQuote {
         font-size: 1.3em;
         color: #e4fcff;
-        margin-top: 25%;
+        margin-top: 40%;
     }
 
     #timeLine {
@@ -292,6 +304,16 @@ a:hover, a:focus, a:active, a:visited, a:link{
     }
 
     .timeLineQuote {
+        color: black;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-family: Avenir;
+        font-size: 1.20em;
+        text-align: left;
+    }
+
+    .timeLineQuote-m {
+        display:block;
         color: black;
         margin-top: 30px;
         margin-bottom: 30px;
