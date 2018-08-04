@@ -5,14 +5,14 @@ body, html {
     /*color: #777;*/
 }
 
-.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg-10, .bgimg-bhd {
+.bg-img-main, .bg-img-secondary, .bg-img-alien, .bg-img-blade-runner, .bg-img-thelma-louise, .bg-img-gladiator, .bg-img-bhd, .bg-img-american-gangster, .bg-img-prometheus, .bg-img-martian, .bg-img-footer {
     position: relative;
     opacity: 0.8;
     background: no-repeat fixed center;
     background-size: cover;
 }
 
-.bgimg-1 {
+.bg-img-main {
     background-image: url("https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2015/10/ridley-scott-featured.jpg");
     min-height: 100%;
 }
@@ -27,18 +27,14 @@ body, html {
 }
 
 .caption span.title {
-    /*background-color: #111;*/
-    color: #e2984c;
-    /*color: #ac2020;*/
-    padding: 18px;
+    color: goldenrod;
     font-family: Audiowide;
     font-size: 8.5em;
     text-shadow: 2px 2px black;
-    /*letter-spacing: 10px;*/
 }
 
 .mainQuote {
-    font-family: Playfair Display;
+    font-family: Avenir;
     font-size: 4rem;
     color: #e4fcff;
     margin-left: 2rem;
@@ -56,7 +52,8 @@ body, html {
 #timeLine {
     padding-top: 10px;
     text-align: center;
-    font-family: Futura;
+    font-family: Avenir;
+    /*font-family: Futura;*/
     font-size: 2rem;
     list-style-type: none;
 }
@@ -84,7 +81,7 @@ h3 {
     text-align: left;
 }
 
-.bgimg-2 {
+.bg-img-secondary {
     background-image: url("http://www.tripwiremagazine.co.uk/wp-content/uploads/2018/03/ridley_scott.jpg");
     min-height: 600px;
 }
@@ -125,54 +122,54 @@ h3 {
 
 /*ALIEN https://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/t/56054a09e4b0612d66a925c3/1443187210703/*/
 /*https://skinwalker.files.wordpress.com/2013/01/vlcsnap-2013-01-20-16h51m57s34.png*/
-.bgimg-3 {
+.bg-img-alien {
     background-image: url("http://images5.fanpop.com/image/photos/28800000/Alien-ellen-ripley-28849305-1280-544.jpg");
     min-height: 100vh;
     /*min-height: 750px*/
 }
 
 /*BLADE RUNNER https://images4.alphacoders.com/798/79878.jpg  https://cnet3.cbsistatic.com/img/WbnkmHFMOxBX7R2hBKyg8htIv-Y=/970x0/2015/02/27/434eb576-2563-48e5-8bbb-4aad3d53010e/deckard2.png  */
-.bgimg-4 {
+.bg-img-blade-runner {
     background-image: url("https://s-media-cache-ak0.pinimg.com/originals/16/00/18/160018d56e26a895078284d07e89fd16.jpg");
     min-height: 100vh;
 }
 /*https://i.ytimg.com/vi/2iBFmKlO4BY/maxresdefault.jpg*/
 /*THELMA AND LOUISE */
-.bgimg-5 {
+.bg-img-thelma-louise {
     background-image: url("https://geektometv.files.wordpress.com/2016/08/thelma-louise-7.jpg?w=1092&h=400&crop=1");
     min-height: 100vh;
 }
 /*GLADIATOR*/
-.bgimg-6 {
+.bg-img-gladiator {
     background-image: url("http://blog.hdwallsource.com/wp-content/uploads/2016/05/gladiator-movie-wide-wallpaper-52399-54110-hd-wallpapers.jpg");
     min-height: 100vh;
 }
+.bg-img-bhd {
+    /*BLACK HAWK DOWN*/
+    background-image: url("https://wallpapercave.com/wp/wp2085140.jpg");
+    min-height: 100vh;
+}
 /*AMERICAN GANGSTER */
-.bgimg-7 {
+.bg-img-american-gangster {
     background-image: url("http://i.imgur.com/z60NxQN.jpg");
     min-height: 100vh;
 }
 /*PROMETHEUS*/
-.bgimg-8 {
+.bg-img-prometheus {
     background-image: url("http://2.bp.blogspot.com/-irA9JevMPLk/UPHSOMszkYI/AAAAAAAAIDs/a6q9YIKwqPc/s1600/prom.jpg");
     min-height: 100vh;
 }
-.bgimg-9 {
+.bg-img-martian {
 /*THE MARTIAN http://wallpapersdsc.net/wp-content/uploads/2015/09/33_the_martian.jpg*/
     background-image: url("http://static6.businessinsider.com/image/55d4ac4ddd0895f0048b45c3-1145-526/screen%20shot%202015-08-19%20at%2010.41.45%20am.png");
     min-height: 100vh;
 }
 
-.bgimg-10 {
+.bg-img-footer {
     background-image: url("http://cdn.collider.com/wp-content/uploads/2016/06/alien-covenant-ridley-scott-michael-fassbender.jpg");
     min-height: 800px;
 }
 
-.bgimg-bhd {
-    /*BLACK HAWK DOWN*/
-    background-image: url("https://wallpapercave.com/wp/wp2085140.jpg");
-    min-height: 100vh;
-}
 
 .lastQuote {
     font-family: Avenir;
@@ -253,23 +250,23 @@ a:hover, a:focus, a:active, a:visited, a:link{
     color: #00aced;
 }
 
-.bgimg-1m, .bgimg-2m, .bgimg-3m, .bgimg-4m, .bgimg-5m, .bgimg-6m, .bgimg-7m, .bgimg-8m, .bgimg-9m, .bgimg-10m, .bgimg-bhdm  {
+.bg-img-main-m, .bg-img-secondary-m, .bg-img-alien-m, .bg-img-blade-runner-m, .bg-img-thelma-louise-m, .bg-img-gladiator-m, .bg-img-bhd-m, .bg-img-american-gangster-m, .bg-img-prometheus-m, .bg-img-martian-m, .bg-img-footer-m {
     display: none;
 }
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1024px) {
-    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg-10, .bgimg-bhd  {
+    .bg-img-main, .bg-img-secondary, .bg-img-alien, .bg-img-blade-runner, .bg-img-thelma-louise, .bg-img-gladiator, .bg-img-bhd, .bg-img-american-gangster, .bg-img-prometheus, .bg-img-martian, .bg-img-footer  {
         background-attachment: scroll;
     }
 }
 
 @media screen and (max-width: 600px) {
 
-    .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6, .bgimg-7, .bgimg-8, .bgimg-9, .bgimg-10, .bgimg-bhd  {
+    .bg-img-main, .bg-img-secondary, .bg-img-alien, .bg-img-blade-runner, .bg-img-thelma-louise, .bg-img-gladiator, .bg-img-bhd, .bg-img-american-gangster, .bg-img-prometheus, .bg-img-martian, .bg-img-footer  {
         display: none;
     }
 
-    .bgimg-1m, .bgimg-2m, .bgimg-3m, .bgimg-4m, .bgimg-5m, .bgimg-6m, .bgimg-7m, .bgimg-8m, .bgimg-9m, .bgimg-10m, .bgimg-bhdm   {
+    .bg-img-main-m, .bg-img-secondary-m, .bg-img-alien-m, .bg-img-blade-runner-m, .bg-img-thelma-louise-m, .bg-img-gladiator-m, .bg-img-bhd-m, .bg-img-american-gangster-m, .bg-img-prometheus-m, .bg-img-martian-m, .bg-img-footer-m {
         display:block;
         width: 100%;
         height: auto;
