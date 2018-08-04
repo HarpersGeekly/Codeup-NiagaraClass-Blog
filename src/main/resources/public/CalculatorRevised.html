@@ -2,102 +2,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calculator</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        /*https://s-media-cache-ak0.pinimg.com/originals/cf/e5/67/cfe56711eaa815f8d4beb446d7398acc.jpg*/
+        body {
+            text-align: center;
+            background: url('/images/cloudgrass.png') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .container {
+            margin-top: 80px;
+        }
+        input[type=text] {
+            margin: 1px;
+            width: 500px;
+            padding: 5px 5px;
+            box-sizing: border-box;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            /*background-color: #fffbdc;*/
+            /*background: url('images/paper_fibers.png');*/
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            color: white;
+            border-style: none;
+        }
+
+        #btnClear {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ff7654;
+            box-shadow: 2px 2px #000000;
+            font-size: 30px;
+            width: 345px;
+            outline: none;
+        }
+        #btnClear:hover {
+            background-color: #FF986F;
+        }
+
+
+        .oper {
+            padding: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            width: 75px;
+            height: 75px;
+            background-color: #ffd242;
+            box-shadow: 2px 2px #000000;
+            border-radius: 4px;
+            outline: none;
+
+        }
+        .oper:hover {
+            background-color: #FFED8B;
+        }
+
+        .number {
+            background-color: #47abff;
+            box-shadow: 2px 2px #000000;
+            border-radius: 4px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 2px;
+            font-size: 20px;
+            width: 75px;
+            height: 75px;
+            outline:none;
+        }
+        .number:hover {
+            background-color: #a8cbff;
+        }
+        #btnEquals {
+            font-weight: bold;
+            background-color: #01ff57;
+            box-shadow: 2px 2px #000000;
+            border-radius: 4px;
+            padding: 25px;
+            margin: 2px;
+            font-size: 20px;
+            width: 75px;
+            height: 75px;
+            outline: none;
+        }
+        #btnEquals:hover {
+            background-color: #85FFB3;
+        }
+
+        @media screen and (max-width: 600px) {
+            input[type=text] {
+                width: 350px;
+            }
+
+            .container {
+                margin-top: 25px;
+            }
+        }
+
+    </style>
 </head>
-<style>
-    /*https://s-media-cache-ak0.pinimg.com/originals/cf/e5/67/cfe56711eaa815f8d4beb446d7398acc.jpg*/
-    body {
-        text-align: center;
-        background: url('/images/cloudgrass.png') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-    .container {
-        margin-top: 80px;
-    }
-    input[type=text] {
-        margin: 1px;
-        width: 500px;
-        padding: 5px 5px;
-        box-sizing: border-box;
-        font-size: 30px;
-        font-weight: bold;
-        text-align: center;
-        /*background-color: #fffbdc;*/
-        /*background: url('images/paper_fibers.png');*/
-        background: rgba(0, 0, 0, 0.6);
-        border-radius: 5px;
-        color: white;
-        border-style: none;
-    }
 
-    #btnClear {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding: 10px;
-        border-radius: 5px;
-        background-color: #ff7654;
-        box-shadow: 2px 2px #000000;
-        font-size: 30px;
-        width: 345px;
-        outline: none;
-    }
-    #btnClear:hover {
-        background-color: #FF986F;
-    }
-
-
-    .oper {
-        padding: 25px;
-        font-size: 20px;
-        font-weight: bold;
-        width: 75px;
-        height: 75px;
-        background-color: #ffd242;
-        box-shadow: 2px 2px #000000;
-        border-radius: 4px;
-        outline: none;
-
-    }
-    .oper:hover {
-        background-color: #FFED8B;
-    }
-
-    .number {
-        background-color: #47abff;
-        box-shadow: 2px 2px #000000;
-        border-radius: 4px;
-        font-weight: bold;
-        padding: 20px;
-        margin: 2px;
-        font-size: 20px;
-        width: 75px;
-        height: 75px;
-        outline:none;
-    }
-    .number:hover {
-        background-color: #a8cbff;
-    }
-    #btnEquals {
-        font-weight: bold;
-        background-color: #01ff57;
-        box-shadow: 2px 2px #000000;
-        border-radius: 4px;
-        padding: 25px;
-        margin: 2px;
-        font-size: 20px;
-        width: 75px;
-        height: 75px;
-        outline: none;
-    }
-    #btnEquals:hover {
-        background-color: #85FFB3;
-    }
-
-
-</style>
+<body>
 
 <div class="container">
     <div class="row">
@@ -140,7 +154,7 @@
     </div>
 </div>
 
-<body>
+
 <script>
     (function() {
         'use strict';
