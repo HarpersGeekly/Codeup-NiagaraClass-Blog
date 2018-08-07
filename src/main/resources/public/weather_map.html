@@ -172,10 +172,10 @@
 
             <form id="form2">
                 <select id="select">
-                    <option id="three" value="3">3 Day Forecast</option>
-                    <option id="six" value="6">6 Day Forecast</option>
+                    <option id="three" value="3">3 Day</option>
+                    <option id="six" value="6">6 Day</option>
                 </select>
-                <button id="submitDays">Submit</button>
+                <button id="submitDays">Change Forecast</button>
             </form>
 
         </div>
@@ -190,28 +190,28 @@
         "use strict";
 // ========================================== GLOBAL VARIABLES ==========================================================
 
-        var lat = 29.42;
-        var lng = -98.49;
-        var count = 3;
+        let lat = 29.42;
+        let lng = -98.49;
+        let count = 3;
 
 // ========================================== AJAX REQUEST: FORECAST DATA ===============================================
 
     function getForecast() {
-        var openWeatherRequest = $.get("https://api.openweathermap.org/data/2.5/forecast/daily", {
+        let openWeatherRequest = $.get("https://api.openweathermap.org/data/2.5/forecast/daily", {
             APPID: "6cde4ba95d87ed470cbe4870230de2d5",
             lat: lat,
             lon: lng,
             units: "imperial",
             cnt: count
         });
-        openWeatherRequest.done(function (data) {
+        openWeatherRequest.done((data) => {
 
             $("#forecasts").html(""); // clears out the html of this element as soon as the request is done. (The placement here prevents html flickering issue.)
 
-            var forecasts = []; // declare an empty array for objects.
+            let forecasts = []; // declare an empty array for objects.
 
-                data.list.forEach(function (object) { // with the data received, I created a function that takes in an object and created one with specific properties found in the console.
-                    var newForecast = {
+                data.list.forEach((object) => { // with the data received, I created a function that takes in an object and created one with specific properties found in the console.
+                    let newForecast = {
                         date: moment.unix(object.dt).format("dddd, MMM DD, YYYY"),
                         high: object.temp.max,
                         low: object.temp.min,
@@ -224,9 +224,9 @@
                     forecasts.push(newForecast); // take the new object and place it in the array.
                 });
 
-            for (var i = 0; i < forecasts.length ; i++) { // loop through three (0,1,2) array objects and structure the content to look a specific way when placed in the html:
+            for (let i = 0; i < forecasts.length ; i++) { // loop through three (0,1,2) array objects and structure the content to look a specific way when placed in the html:
 
-                var generateForecastStructure = '<div class="forecastStructure col-md-4 col-sm-4">'
+                let generateForecastStructure = '<div class="forecastStructure col-md-4 col-sm-4">'
                         + '<p class="date">'+ forecasts[i].date + '</p>'
                         + '<p class="high">' + Math.round(forecasts[i].high) + "° " + '<span class="low">' + Math.round(forecasts[i].low) + "° F" + '</span>' + '</p>'
                         + '<img src="http://openweathermap.org/img/w/' + forecasts[i].imageIcon + '.png">'
@@ -246,8 +246,8 @@
 
         // ============================= MAP FUNCTIONALITY ==============================================================
 
-        var newMap = function() {
-            var mapOptions = {
+        let newMap = () => {
+            let mapOptions = {
                 zoom: 6,
                 center: {
                     lat: 29.424122,
@@ -255,16 +255,16 @@
                 },
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+            let map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
 
         // ============================ MARKER FUNCTIONALITY ============================================================
 
-            var markerPosition = {
+            let markerPosition = {
                 lat: 29.424122,
                 lng: -98.493629
                 };
-            var markerArray = [];
-            var marker = new google.maps.Marker({
+            let markerArray = [];
+            let marker = new google.maps.Marker({
                 position: markerPosition,
                 animation: google.maps.Animation.DROP,
                 map: map,
@@ -273,7 +273,7 @@
             markerArray.push(marker);
 
             function dragEnd(marker) {
-                google.maps.event.addListener(marker, 'dragend', function (evt) {
+                google.maps.event.addListener(marker, 'dragend', (evt) => {
                     lat = evt.latLng.lat();
                     lng = evt.latLng.lng();
                     getForecast();
@@ -283,15 +283,15 @@
 
         // ==================================  INPUT FIELD AND SEARCH FOR NEW LOCATION ==================================
 
-            $("#form1").submit(function(e) {
+            $("#form1").submit((e) => {
                 e.preventDefault(); // this prevents the form from redirecting
             });
 
-            $("#submit").click(function() {
-                var inputLocation = $('#search').val();
+            $("#submit").click(() => {
+                let inputLocation = $('#search').val();
 
                 function inputNewMarker(location) {
-                    var newMarker = new google.maps.Marker({
+                    let newMarker = new google.maps.Marker({
                         position: location,
                         animation: google.maps.Animation.DROP,
                         map: map,
@@ -303,14 +303,14 @@
                     dragEnd(newMarker);
 
                 }
-                var geocoder = new google.maps.Geocoder();
-                geocoder.geocode({ "address": inputLocation }, function(results, status) {
+                let geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ "address": inputLocation }, (results, status) => {
                     if (status == google.maps.GeocoderStatus.OK) {
                             // Recenter the map over the address
                         map.setCenter(results[0].geometry.location);
                         lat = results[0].geometry.location.lat();
                         lng = results[0].geometry.location.lng();
-                        var myLatLng = {lat: lat, lng: lng};
+                        let myLatLng = {lat: lat, lng: lng};
                         inputNewMarker(myLatLng);
                         getForecast();
                         $('#search').val('');
@@ -321,12 +321,12 @@
             });
         };
 
-        $("#form2").submit(function(e) {
+        $("#form2").submit((e) => {
             e.preventDefault(); // this prevents the form from redirecting
         });
 
-        $('#submitDays').click(function () {
-           var result = $('#select').val();
+        $('#submitDays').click(() => {
+           let result = $('#select').val();
            count = result;
             getForecast();
         });
