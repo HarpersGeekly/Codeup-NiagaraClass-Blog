@@ -253,14 +253,18 @@ a:hover, a:focus, a:active, a:visited, a:link{
 
 .imdb-icon {
     color:#f3ce13;
+    text-rendering: optimizeLegibility;
+    font-family: 'FontAwesome';
 }
 
 .w-icon {
     color: white;
+    text-rendering: optimizeLegibility;
 }
 
 .t-icon {
     color: #00aced;
+    text-rendering: optimizeLegibility;
 }
 
 .bg-img-main-m, .bg-img-secondary-m, .bg-img-alien-m, .bg-img-blade-runner-m, .bg-img-thelma-louise-m, .bg-img-gladiator-m, .bg-img-bhd-m, .bg-img-american-gangster-m, .bg-img-prometheus-m, .bg-img-martian-m, .bg-img-footer-m {
