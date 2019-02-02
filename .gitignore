@@ -24,3 +24,4 @@ nbdist/
 .nb-gradle/
 
 application.properties
+/Users/RyanHarper/IdeaProjects/Niagara-blog/src/main/resources/application.properties
