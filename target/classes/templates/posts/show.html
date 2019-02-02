@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Show</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../blog.css"/>
+</head>
+<body>
+<div class="navbar" th:include="fragments/navbar :: newNavbar">
+</div>
+
+<!--use th:object ONLY for a single object, not for lists-->
+<div class="container">
+    <div th:object="${post}">
+        <h2 th:text="*{title}"></h2>
+        <h3 th:utext="*{htmlBody}"></h3>
+
+        <!--<img th:if="${post.image != null}" th:src="${'/uploads/' + post.image}"  alt="" />-->
+
+        <h4>Created by: <a th:href="${'/users/' + post.user.id}"
+                                                    th:text="${post.user.username}"></a></h4>
+        <div sec:authorize="isAuthenticated()">
+            <div th:if="${isEditable}">
+                <a class="btn btn-primary" th:href="${'/posts/' + post.id + '/edit'}">Edit</a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

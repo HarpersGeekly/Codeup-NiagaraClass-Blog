@@ -1,0 +1,117 @@
+h1 {
+    font-family: Slim Joe;
+    color: #4d6c67;
+    font-size: 50px;
+    color: #000000;
+}
+
+h4 {
+    font-family: Futura;
+    font-size: 14px;
+}
+
+h2, h3 {
+    font-family: Futura;
+    color: #000000;
+    font-size: 18px;
+
+}
+
+h2 {
+    font-size: 24px;
+}
+
+#navbarContainer {
+    background: url("images/tweed.png");
+    /*background-color: #4d6c85;*/
+
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+    font-family: Slim Joe;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #00bdd1;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+.nav > li > a {
+    color: white !important;
+    font-family: Slim Joe;
+}
+
+.nav > li > a:hover {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    color: #00bdd1 !important;
+}
+
+#logout {
+    color: white;
+    font-family: Slim Joe;
+    margin-top:8px;
+    text-decoration: none;
+}
+
+#logout:hover {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    color: #00bdd1;
+    margin-top:8px;
+    text-decoration: none;
+}
+
+.btn-default {
+    font-family: Futura;
+    color: black;
+    background-color: #b9ced1;
+    border: hidden;
+    border-radius: 2px;
+}
+
+.btn-default:hover {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    background-color: #00bdd1;
+    color: black;
+}
+
+body {
+    background: url("images/paper_fibers.png") fixed;
+}
+

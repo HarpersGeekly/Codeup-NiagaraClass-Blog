@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        /*https://s-media-cache-ak0.pinimg.com/originals/cf/e5/67/cfe56711eaa815f8d4beb446d7398acc.jpg*/
+        body {
+            text-align: center;
+            background: url('/images/cloudgrass.png') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .container {
+            margin-top: 80px;
+        }
+        input[type=text] {
+            margin: 1px;
+            width: 500px;
+            padding: 5px 5px;
+            box-sizing: border-box;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            /*background-color: #fffbdc;*/
+            /*background: url('images/paper_fibers.png');*/
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            color: white;
+            border-style: none;
+        }
+
+        #btnClear {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ff7654;
+            box-shadow: 2px 2px #000000;
+            font-size: 30px;
+            width: 345px;
+            outline: none;
+        }
+        #btnClear:hover {
+            background-color: #FF986F;
+        }
+
+
+        .oper {
+            padding: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            width: 75px;
+            height: 75px;
+            background-color: #ffd242;
+            box-shadow: 2px 2px #000000;
+            border-radius: 4px;
+            outline: none;
+
+        }
+        .oper:hover {
+            background-color: #FFED8B;
+        }
+
+        .number {
+            background-color: #47abff;
+            box-shadow: 2px 2px #000000;
+            border-radius: 4px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 2px;
+            font-size: 20px;
+            width: 75px;
+            height: 75px;
+            outline:none;
+        }
+        .number:hover {
+            background-color: #a8cbff;
+        }
+        #btnEquals {
+            font-weight: bold;
+            background-color: #01ff57;
+            box-shadow: 2px 2px #000000;
+            border-radius: 4px;
+            padding: 25px;
+            margin: 2px;
+            font-size: 20px;
+            width: 75px;
+            height: 75px;
+            outline: none;
+        }
+        #btnEquals:hover {
+            background-color: #85FFB3;
+        }
+
+        @media screen and (max-width: 600px) {
+            input[type=text] {
+                width: 350px;
+            }
+
+            .container {
+                margin-top: 25px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <input type="text" id="left-operand" placeholder="Number" readonly><br>
+        <input type="text" id="operator" placeholder="Operator" readonly><br>
+        <input type="text" id="right-operand" placeholder="Number" readonly><br>
+        <input type="text" id="answerField" placeholder= "=" readonly>
+    </div>
+
+    <div class="row">
+        <button class="button" id="btnClear">Clear</button>
+    </div>
+
+    <div class="row">
+        <button class="number" id="btn7">7</button>
+        <button class="number" id="btn8">8</button>
+        <button class="number" id="btn9">9</button>
+        <button class="oper" id="btnDivision">/</button>
+    </div>
+
+    <div class="row">
+        <button class="number" id="btn4">4</button>
+        <button class="number" id="btn5">5</button>
+        <button class="number" id="btn6">6</button>
+        <button class="oper" id="btnMultiply">*</button>
+    </div>
+
+    <div class="row">
+        <button class="number" id="btn1">1</button>
+        <button class="number" id="btn2">2</button>
+        <button class="number" id="btn3">3</button  >
+        <button class="oper" id="btnSubtract">-</button>
+    </div>
+
+    <div class="row">
+        <button class="number" id="btn0">0</button>
+        <button class="number" id="btnDecimal">.</button>
+        <button class="button" id="btnEquals">=</button>
+        <button class="oper" id="btnAddition">+</button>
+    </div>
+</div>
+
+
+<script>
+    (function() {
+        'use strict';
+
+//================================== Main Variable Assignments =========================================================
+
+        var firstInput = document.getElementById('left-operand');
+        var operator = document.getElementById('operator');
+        var secondInput = document.getElementById('right-operand');
+        var answerField = document.getElementById('answerField');
+        var inputButtons = document.querySelectorAll('.oper,.number');
+        var btnEquals = document.getElementById('btnEquals');
+        var btnClear = document.getElementById('btnClear');
+        var btnDecimal = document.getElementById('btnDecimal');
+        var maxLength = 12;
+        var decimalPressOnce = false;
+
+//======= Limits the Input Length to 12, enables the Number, Operator, and Decimal to click and input values ===========
+
+        var enableInputs = function () {
+            if (this.className == 'number' && operator.value == '') {
+                if (firstInput.value.length >= maxLength) {
+                        return;
+                }
+                if (this.id == 'btnDecimal') {
+                    if (decimalPressOnce == false) {
+                        decimalPressOnce = true;
+                    } else {
+                        return;
+                    }
+                }
+                firstInput.value += this.innerHTML;
+            } else if (this.className == 'oper' && firstInput.value != '') {
+                operator.value = this.innerHTML;
+            } else if (this.className == 'number') {
+                if (secondInput.value.length >= maxLength) {
+                    return;
+                }
+                if (this.id == 'btnDecimal') {
+                    if (decimalPressOnce == true && firstInput.value != '') {
+                        decimalPressOnce = false;
+                    } else {
+                        return;
+                    }
+                }
+                secondInput.value += this.innerHTML;
+            }
+        };
+
+        for (var i = 0; i < inputButtons.length; i++) {
+            inputButtons[i].addEventListener('click', enableInputs);
+        }
+//============================================ The Clear Button ========================================================
+
+        var clear = function () {
+            firstInput.value = '';
+            operator.value = '';
+            secondInput.value = '';
+            answerField.value = '';
+            decimalPressOnce = false;// resets back to default.
+
+        };
+        btnClear.addEventListener('click', clear);
+
+
+//========================================= The Math Calculations ======================================================
+
+
+        var calculate = function () {
+
+            if (isNaN(firstInput.value) || isNaN(secondInput.value) || firstInput.value == '' || secondInput.value == '') {
+                firstInput.value = 'I\'m sorry,';
+                operator.value = 'Dave.';
+                secondInput.value = 'I\'m afraid';
+                answerField.value = 'I can\'t do that.';
+                document.body.style.backgroundImage =
+                        "url('https://66.media.tumblr.com/tumblr_m6i8gcyLgb1qcwoano1_500.gif')";
+                setTimeout(function () { location.reload(true); }, 2500);
+
+            } else {
+                switch (operator.value) {
+
+                    case '+':
+                        answerField.value = parseFloat(firstInput.value) + parseFloat(secondInput.value);
+                        firstInput.value = parseFloat(firstInput.value) + parseFloat(secondInput.value);
+                        operator.value= '';
+                        secondInput.value = '';
+                        break;
+
+                    case '-':
+                        answerField.value = parseFloat(firstInput.value) - parseFloat(secondInput.value);
+                        firstInput.value = parseFloat(firstInput.value) - parseFloat(secondInput.value);
+                        operator.value='';
+                        secondInput.value = '';
+                        break;
+
+                    case '*':
+                        answerField.value = parseFloat(firstInput.value) * parseFloat(secondInput.value);
+                        firstInput.value = parseFloat(firstInput.value) * parseFloat(secondInput.value);
+                        operator.value='';
+                        secondInput.value = '';
+                        break;
+
+                    case '/':
+                        // Divide by Zero Easter Egg ;)
+                        if (secondInput.value === '0') {
+                            firstInput.value = 'OOPS';
+                            operator.value = 'YOU BROKE';
+                            secondInput.value = 'THE INTERNET';
+                            answerField.value = '...and spacetime.';
+                            document.body.style.backgroundImage =
+          "url('https://66.media.tumblr.com/414c6d09204aba6b054341b45b68758d/tumblr_n381ofewGD1qghl49o1_r1_500.gif')";
+                            setTimeout(function () { location.reload(true); }, 4000);
+                            break;
+                        }
+                        else
+                            answerField.value = parseFloat(firstInput.value) / parseFloat(secondInput.value);
+                            firstInput.value = parseFloat(firstInput.value) / parseFloat(secondInput.value);
+                            operator.value='';
+                            secondInput.value = '';
+                            break;
+                        }
+
+                    }
+            };
+
+//===========================================  The Equals Button =======================================================
+
+        btnEquals.addEventListener('click', calculate); // uses the calculate function when equals button is pressed
+
+        var btnEqualsAgain = function () {
+            if (firstInput != '' && secondInput.value == '' && decimalPressOnce == false){
+                decimalPressOnce = true;
+            }
+        };
+        btnEquals.addEventListener('click', btnEqualsAgain); //allows decimal to be used once after equals button.
+
+    })();
+</script>
+</body>
+</html>
+
+
+<!--https://66.media.tumblr.com/df4352b7810d2cf35004eeadf44d5938/tumblr_mlgg0xlzkv1r2du9bo1_500.gif-->
+
+<!--//  var lastOperation= '';-->
+<!--// continue to click equals to repeat the last operation-->
+<!--//if (answerField != '' && secondInput != '' && firstInput != '') {-->
+<!--//        for (var i = 0; i < answerField.length; i++) {-->
+<!--//        parseFloat(firstInput.value) + parseFloat(secondInput.value);-->
+<!--//        firstInput.value = parseFloat(firstInput.value) + parseFloat(secondInput.value);-->
+<!--//           }-->
+<!--// repeat operation ?-->

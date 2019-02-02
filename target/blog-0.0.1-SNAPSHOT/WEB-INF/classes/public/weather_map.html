@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Map</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+    <style>
+
+        body {
+            /*background-color: #28a4c9;*/
+            background-image: url('/images/random_grey_variations.png');
+            height: 100%;
+        }
+
+        h1 {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 45px;
+            font-family: "Futura";
+            color: #faff96;
+        }
+
+        .date {
+            font-family: Avenir;
+            margin-top: 10px;
+            color: #555555;
+        }
+
+        .high {
+            font-family: "Futura";
+            font-size: 42px;
+        }
+
+        .low {
+            font-family: "Futura";
+            font-size: 28px;
+            color: aliceblue;
+        }
+        span {
+            font-size: 20px;
+            color: #555555;
+        }
+
+        .windSpeed, .humidity {
+            color: #555555;
+        }
+
+        img {
+            /*width: 20%;*/
+        }
+
+        #cityName {
+            padding-top:10px;
+            text-align: center;
+            font-size: 30px;
+            font-family: Avenir;
+            font-weight: bold;
+            color: white;
+        }
+
+        #forecasts {
+
+        }
+
+        .forecastStructure {
+            background-color: #d2d2be;
+            border: 2px solid black;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            font-family: "Trebuchet";
+            padding: 5px;
+        }
+
+        #googleMap {
+            /*width: 100%;*/
+            height: 350px;
+            background-color: grey;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        #searchRow {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #search {
+            margin-top: 1em;
+            width: 20%;
+            font-size: 24px;
+            outline: none;
+            font-family: Avenir;
+        }
+        #selectDays {
+            text-align: center;
+            /*margin-top: -3.6%;*/
+            /*margin-left: 38%;*/
+        }
+
+        @media screen and (max-width: 600px) {
+
+        .forecastStructure {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .date {
+                font-size: 14px;
+            }
+
+            .high {
+                font-size: 28px;
+            }
+
+            .low {
+                font-size: 25px;
+                color: aliceblue;
+            }
+
+            .windSpeed, .humidity {
+                font-size: 12px;
+            }
+
+            #search {
+                margin-top: 0;
+                width: 50%;
+            }
+
+            #select {
+                background-color: aliceblue;
+            }
+
+            #submit {
+                color: aliceblue;
+            }
+
+            #submitDays {
+                color: aliceblue;
+            }
+
+            #googleMap {
+                height: 230px;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+<h1>Weather Forecast</h1>
+<p id="cityName"></p>
+
+<!--col-md-4 col-sm-4-->
+
+<div class="page-wrapper container-fluid">
+
+        <div class="" id="forecasts"></div>
+
+        <div class="" id="searchRow">
+            <form id="form1">
+                <input type="text" id="search" placeholder="Search City">
+                <button type="submit" id="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="" id="selectDays">
+
+            <form id="form2">
+                <select id="select">
+                    <option id="three" value="3">3 Day</option>
+                    <option id="six" value="6">6 Day</option>
+                </select>
+                <button id="submitDays">Change Forecast</button>
+            </form>
+
+        </div>
+
+        <div class="" id="googleMap"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdEhJIIBoaAFGkkOlpPjqJwRLgjQOKOfg&libraries=places"></script>
+<script>
+    (function() {
+        "use strict";
+// ========================================== GLOBAL VARIABLES ==========================================================
+
+        let lat = 29.42;
+        let lng = -98.49;
+        let count = 3;
+
+// ========================================== AJAX REQUEST: FORECAST DATA ===============================================
+
+    function getForecast() {
+        let openWeatherRequest = $.get("https://api.openweathermap.org/data/2.5/forecast/daily", {
+            APPID: "6cde4ba95d87ed470cbe4870230de2d5",
+            lat: lat,
+            lon: lng,
+            units: "imperial",
+            cnt: count
+        });
+        openWeatherRequest.done((data) => {
+
+            $("#forecasts").html(""); // clears out the html of this element as soon as the request is done. (The placement here prevents html flickering issue.)
+
+            let forecasts = []; // declare an empty array for objects.
+
+                data.list.forEach((object) => { // with the data received, I created a function that takes in an object and created one with specific properties found in the console.
+                    let newForecast = {
+                        date: moment.unix(object.dt).format("dddd, MMM DD, YYYY"),
+                        high: object.temp.max,
+                        low: object.temp.min,
+                        imageIcon: object.weather[0].icon,
+                        typeCondition: object.weather[0].main,
+                        condition: object.weather[0].description,
+                        humidity: object.humidity,
+                        windSpeed: object.speed
+                    };
+                    forecasts.push(newForecast); // take the new object and place it in the array.
+                });
+
+            for (let i = 0; i < forecasts.length ; i++) { // loop through three (0,1,2) array objects and structure the content to look a specific way when placed in the html:
+
+                let generateForecastStructure = '<div class="forecastStructure col-md-4 col-sm-4">'
+                        + '<p class="date">'+ forecasts[i].date + '</p>'
+                        + '<p class="high">' + Math.round(forecasts[i].high) + "° " + '<span class="low">' + Math.round(forecasts[i].low) + "° F" + '</span>' + '</p>'
+                        + '<img src="http://openweathermap.org/img/w/' + forecasts[i].imageIcon + '.png">'
+                        + '<div>'
+                        + '<p class="windSpeed">' + "Wind: " + Math.round(forecasts[i].windSpeed) + " mph" + '</p>'
+//                        + '<p class="typeCondition">' + forecasts[i].typeCondition + '</p>'
+//                        + '<p class="condition">' + "Expected: " + forecasts[i].condition + '</p>'
+                       + '<p class="humidity">' + "Humidity: " + forecasts[i].humidity + "%" + '</p>'  + '</div>' + '</div>';
+
+
+                $('#forecasts').append(generateForecastStructure); //insert the content at the end of the element with id "forecasts".
+                $('#cityName').html(data.city.name); // sets the content (innerHTML) of the element with id "cityName".
+            }
+        });
+    }
+    getForecast(); // wrap all this in a function to be used again.
+
+        // ============================= MAP FUNCTIONALITY ==============================================================
+
+        let newMap = () => {
+            let mapOptions = {
+                zoom: 6,
+                center: {
+                    lat: 29.424122,
+                    lng: -98.493629
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            let map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+
+        // ============================ MARKER FUNCTIONALITY ============================================================
+
+            let markerPosition = {
+                lat: 29.424122,
+                lng: -98.493629
+                };
+            let markerArray = [];
+            let marker = new google.maps.Marker({
+                position: markerPosition,
+                animation: google.maps.Animation.DROP,
+                map: map,
+                draggable: true
+                });
+            markerArray.push(marker);
+
+            function dragEnd(marker) {
+                google.maps.event.addListener(marker, 'dragend', (evt) => {
+                    lat = evt.latLng.lat();
+                    lng = evt.latLng.lng();
+                    getForecast();
+                });
+            }
+            dragEnd(marker);
+
+        // ==================================  INPUT FIELD AND SEARCH FOR NEW LOCATION ==================================
+
+            $("#form1").submit((e) => {
+                e.preventDefault(); // this prevents the form from redirecting
+            });
+
+            $("#submit").click(() => {
+                let inputLocation = $('#search').val();
+
+                function inputNewMarker(location) {
+                    let newMarker = new google.maps.Marker({
+                        position: location,
+                        animation: google.maps.Animation.DROP,
+                        map: map,
+                        draggable: true
+                    });
+                    markerArray.push(newMarker);
+                    markerArray[0].setMap(null); //making the older marker invalid
+                    markerArray.shift(); // removing the old marker from the array
+                    dragEnd(newMarker);
+
+                }
+                let geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ "address": inputLocation }, (results, status) => {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                            // Recenter the map over the address
+                        map.setCenter(results[0].geometry.location);
+                        lat = results[0].geometry.location.lat();
+                        lng = results[0].geometry.location.lng();
+                        let myLatLng = {lat: lat, lng: lng};
+                        inputNewMarker(myLatLng);
+                        getForecast();
+                        $('#search').val('');
+                    } else {
+                        alert("Geocoding was not successful. Please enter a valid location.");
+                    }
+                });
+            });
+        };
+
+        $("#form2").submit((e) => {
+            e.preventDefault(); // this prevents the form from redirecting
+        });
+
+        $('#submitDays').click(() => {
+           let result = $('#select').val();
+           count = result;
+            getForecast();
+        });
+        newMap();
+})();
+
+
+
+// ============================================ORIGINAL PSEUDO-CODE ====================================================
+
+    // get data. take specific data and turn it into an object. put object into a new array. loop through the array and display to div.
+    // create a map. drop a marker on a map. be able to drag that marker to a new spot and change the content within the div based on the new location.
+    // add a search input and ability to switch between 3 day forecast and 7 day forecast.
+
+</script>
+</body>
+</html>
+
+<!--// ========================= Change backgrounds to show weather effects ================================================-->
+
+<!--//                if(forecasts[i].typeCondition == "Clear") {-->
+<!--//                    $("#forecasts").children().css("background", "blue");-->
+<!--//                } else if (forecasts[i].typeCondition == "Rain"){-->
+<!--//                    $("#forecasts").children().css("background", "green");-->
+<!--//                } else if (forecasts[i].typeCondition == "Snow"){-->
+<!--//                    $("#forecasts").children().css("background", "pink");-->
+<!--//                } else if (forecasts[i].typeCondition == "Clouds") {-->
+<!--//                    $("#forecasts").children().css("background", "yellow");-->
+<!--//                }-->

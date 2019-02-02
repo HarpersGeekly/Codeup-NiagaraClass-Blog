@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Merienda|Pompiere');
+
+body {
+    width: 100%;
+    background: url("https://raw.githubusercontent.com/marcy-cooper-scott/coffee-project/master/images/coffe-beans-light.jpg") fixed;
+}
+
+#coffee-giphy {
+    width: 20%;
+}
+
+#welcome {
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 8em;
+    color: springgreen;
+    text-shadow: 2px 2px #000000;
+}
+
+.header {
+    background-color: rgb(245, 244, 225);
+}
+
+.banner {
+    display: flex;
+}
+
+.coffee-wrapper {
+    display: flex;
+}
+
+.coffee-row {
+    width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+label {
+    color:black;
+}
+
+.form-title {
+    text-align: center;
+    font-family: 'Pompiere', cursive;
+    font-size: 2.5em;
+}
+
+.coffee-name {
+    font-size:2.25em;
+    font-family: 'Pompiere', cursive;
+}
+.coffee-roast {
+    font-size: 0.5em;
+    font-family: 'Merienda', cursive;
+}
+
+#add-coffee-name, #coffee-search {
+    font-size: 2em;
+    font-family: 'Pompiere', cursive;
+}
+
+li {
+    font-family: 'Merienda', cursive;
+}
+
+.select-dropdown {
+    font-family: 'Merienda', cursive;
+}
+
+@media screen and (max-width: 600px) {
+
+    #coffee-giphy {
+        width: 100%;
+    }
+
+    .coffee-wrapper {
+        display: block;
+    }
+
+    #add-coffee {
+        float: right;
+    }
+
+}
+
+

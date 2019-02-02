@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>default page demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+</head>
+<body>
+
+<div class="navbar" th:include="fragments/navbar :: newNavbar">
+    This is inside content
+</div>
+
+This is the default page
+
+Today is: <p th:text="${date}"></p>
+My age is: <p th:text="${age}"></p>
+<br/>
+
+<p th:if="${age &gt; 30}">You are over 30 years old</p>
+<p th:if="${age &lt; 30}">You are under 30 years old</p>
+
+<h2>Harper kids:</h2>
+<ul>
+    <span th:each="name : ${names}">
+    <li th:text="${name}"></li>
+    </span>
+</ul>
+
+<div class="footer" th:include="fragments/footer :: newFooter">
+    This is inside content
+</div>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX BLOG</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+
+        #theNavbar {
+            margin-bottom: 20px;
+            padding-top: 50px;
+            height: 195px;
+            background-size: cover;
+            -webkit-clip-path: polygon(0 0, 1600px 0, 1600px 50%, 0 100%);
+            clip-path: polygon(0 0, 1600px 0, 1600px 65%, 0 100%) solid black;
+            border: black;
+            background-color: black;
+            text-align: center;
+            font-family: "American Typewriter";
+            font-size: 38px;
+            color: #5cb2c9;
+        }
+        /*.fullscreen-bg {*/
+            /*position: absolute;*/
+            /*top: 0;*/
+            /*right: 0;*/
+            /*bottom: 0;*/
+            /*left: 0;*/
+            /*overflow: hidden;*/
+            /*z-index: -100;*/
+            /*-webkit-clip-path: polygon(0 0, 1600px 0, 1600px 17%, 0 35%);*/
+            /*clip-path: polygon(0 0, 1600px 0, 1600px 65%, 0 100%); !* this is the most work cutting the image into a shape *!*/
+        /*}*/
+
+        /*.fullscreen-bg__video {*/
+            /*position: absolute;*/
+            /*top: 0;*/
+            /*left: 0;*/
+            /*width: 100%;*/
+            /*height: 100%;*/
+        /*}*/
+        /*.fullscreen-bg__video-footer {*/
+            /*position: relative  ;*/
+            /*top: 0;*/
+            /*right: 0;*/
+            /*bottom: 0;*/
+            /*left: 0;*/
+            /*overflow: hidden;*/
+            /*z-index: -100;*/
+            /*-webkit-clip-path: polygon(0 0, 1600px 25%, 1600px 100%, 0 100%);*/
+            /*clip-path: polygon(0 0, 1600px 0, 1600px 0, 0 0);*/
+        /*}*/
+
+        /*@media (min-aspect-ratio: 16/9) {*/
+            /*.fullscreen-bg__video {*/
+                /*height: 300%;*/
+                /*top: -140%; !* this shows the position of the video, very important to manipulate*!*/
+            /*}*/
+            /*.fullscreen-bg__video-footer {*/
+                /*height: 300%;*/
+                /*top: -140%;*/
+            /*}*/
+        /*}*/
+        /*@media (max-aspect-ratio: 16/9) {*/
+            /*.fullscreen-bg__video {*/
+                /*width: 300%;*/
+                /*left: -100%;*/
+            /*}*/
+        /*}*/
+        /*@media (max-width: 767px) {*/
+            /*.fullscreen-bg {*/
+                /*background: url('video/Blurry-Lights.jpg') center center / cover no-repeat;*/
+
+            /*}*/
+            /*.fullscreen-bg__video {*/
+                /*display: none;*/
+
+            /*}*/
+        /*}*/
+
+        body {
+            background: url('/images/shattered-island.gif')
+        }
+        .container {
+            width: 75%;
+            margin-top: 65px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .Aligner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Aligner-item {
+            max-width: 80%;
+        }
+        .blogStructure {
+            position: relative;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15), 0 5px 25px 0 rgba(0,0,0,0.15);
+            background: url('/images/lightpaperfibers.png');
+        }
+        .blogStructure:hover {
+
+        }
+        .title {
+            font-family: "Big Caslon";
+            /*text-shadow: 1px 1px .25px black ;*/
+        }
+
+        .content {
+            font-family: Avenir;
+        }
+
+        .categories {
+            font-family: "Sinhala Sangam MN";;
+        }
+
+        .date {
+            font-family: "Futura";
+        }
+
+        #formTopic {
+            margin-top: 20px;
+            width: 692px;
+            height: 50px;
+            border-radius: 1px;
+            border: none;
+            outline: none;
+            background: url('/images/paper_fibers.png');
+            font-family: "Big Caslon";
+            font-size: 19px;
+            font-weight: 400;
+        }
+
+        #formTopic:focus {
+            box-shadow: 0 0px 25px rgba(0,0,0,0.40), 0 10px 25px 0 rgba(0,0,0,0.40); /* (255, 255, 255, x) for white */
+        }
+
+        #formContent {
+            margin-top: 10px;
+            width: 692px;
+            height: 200px;
+            border-radius: 1px;
+            border: none;
+            outline: none;
+            resize: none;
+            background: url('/images/paper_fibers.png');
+            font-family: Avenir;
+            font-size: 17px;
+        }
+
+        #formContent:focus {
+            box-shadow: 0 0px 25px rgba(0,0,0,0.40), 0 10px 25px 0 rgba(0,0,0,0.40);
+        }
+
+        #formCategories {
+            width: 343px;
+            height: 30px;outline: none;
+            border-radius: 1px;
+            border: none;
+            background: url('/images/paper_fibers.png');
+            font-family: "Sinhala Sangam MN";
+            font-size: 17px;
+        }
+
+        #formCategories:focus {
+            box-shadow: 0 0px 0px rgba(0,0,0,0.40), 0 10px 25px 0 rgba(0,0,0,0.40);
+        }
+
+        #formDate {
+            margin-top: 10px;
+            width: 342px;
+            height: 30px;
+            border-radius: 1px;
+            border: none;
+            outline: none;
+            background: url('images/paper_fibers.png');
+            font-family: "Sinhala Sangam MN";
+            font-size: 17px;
+        }
+
+        #formDate:focus {
+            box-shadow: 0 0px 0px rgba(0,0,0,0.40), 0 10px 25px 0 rgba(0,0,0,0.40);
+        }
+
+        .wrapper {
+            text-align: center;
+        }
+
+        #submitPost {
+            position: relative;
+            top: 50%;
+            margin-top: 30px;
+            margin-bottom: 25px;
+            padding: 20px;
+            width: 150px;
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+            font-family: "American Typewriter";
+        }
+
+        #submitPost:hover {
+            background-color: #26c96c;
+            box-shadow: 0 5px 50px rgba(0,0,0,0.19), 0 10px 50px 0 rgba(0,0,0,0.19);
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+
+
+        .removePost {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .removePostSpan {
+            color: darkgrey;
+            font-size: 15px;
+        }
+
+        .removePostSpan:hover {
+            color: darkred;
+        }
+
+
+        footer {
+            z-index: 9000;
+            height: 120px;
+            padding-top: 50px;
+            padding-right: 25px;
+            -webkit-clip-path: polygon(0 0, 1600px 25%, 1600px 100%, 0 100%);
+            background-color: #000000;
+            text-align: right;
+            font-family: "American Typewriter";
+            font-size: 24px;
+            color: #5cb2c9;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-default" id="theNavbar">
+    somewhere there is a blog happening.
+    <!--<div class="fullscreen-bg">-->
+        <!--<video loop muted autoplay poster="video/Blurry-Lights.jpg" class="fullscreen-bg__video">-->
+            <!--<source src="video/Blurry-Lights.webm" type="video/webm">-->
+            <!--<source src="video/Blurry-Lights.mp4" type="video/mp4">-->
+            <!--<source src="video/Blurry-Lights.ogv" type="video/ogg">-->
+        <!--</video>-->
+    <!--</div>-->
+</nav>
+
+
+<div class="container" id="posts">
+    <!--<button id="removePost" style="display:none"></button>-->
+</div>
+
+
+<div class="Aligner">
+    <div class="Aligner-item">
+        <form method="post" action="data/blog-deprecated.json">
+        <div>
+            <label for="formTopic"></label>
+            <input type="text" id="formTopic" placeholder="Topic" required>
+        </div>
+        <div>
+            <label for="formContent"></label>
+            <textarea id="formContent"  placeholder="Content" required></textarea>
+        </div>
+        <div>
+            <label for="formCategories"></label>
+            <input type="text" id="formCategories" placeholder="Categories" required>
+            <label for="formDate"></label>
+            <input type="text" id="formDate" placeholder="Month Date, Year" required>
+        </div>
+    </form>
+    </div>
+</div>
+
+<div class="wrapper">
+        <button id="submitPost" class="btn btn-primary">Submit New Post</button>
+</div>
+
+<footer>
+by Ryan Harper.
+    <!--<video loop muted autoplay poster="video/Blurry-Lights.jpg" class="fullscreen-bg__video-footer">-->
+        <!--<source src="video/Blurry-Lights.webm" type="video/webm">-->
+        <!--<source src="video/Blurry-Lights.mp4" type="video/mp4">-->
+        <!--<source src="video/Blurry-Lights.ogv" type="video/ogg">-->
+    <!--</video>-->
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+(function() {
+        "use strict";
+
+
+        var posts = [];
+        var blog = $.ajax("data/blog.json", {
+            type: "GET"
+        });
+
+        var generateBlogStructure = function (object, index) {
+            return '<div class="blogStructure" id="' + index + '">' + '<h1 class="title">' + object.title + " "  + ' </h1>'
+                    + '<p class="content">' + object.content + '</p>'
+                    + '<p class="categories">' + object.categories + '</p>'
+                    + '<p class="date">' + object.date + '</p>'  + '<button class="removePost hidden" data-post-id="' + index + '"><span class="glyphicon glyphicon-remove removePostSpan"></span></button></div>' + '<br>';
+        };
+
+        var clearForm = function() {
+            $('#formTopic').val('');
+            $('#formContent').val('');
+            $('#formCategories').val('');
+            $('#formDate').val('');
+        };
+
+        var refreshBlog = function(posts) {
+            $('#posts').empty();
+            posts.forEach(function (object, index) {
+                $('#posts').append(generateBlogStructure(object, index));
+            });
+
+            $('.removePost').click(function() {
+                posts.splice($(this).attr("data-post-id"), 1);
+//                posts.splice($(this).data("post-id"), 1);
+//                posts.splice($(this).parent('blogStructure').attr('id'), 1);
+                refreshBlog(posts);
+                allowRemovePostIcon();
+            });
+        };
+
+        blog.done(function (data) {
+            posts = data;
+            console.log(data);
+            refreshBlog(data);
+            allowRemovePostIcon();
+
+        });
+
+        $('#submitPost').click(function() {
+            var title = $('#formTopic').val();
+            var content = $('#formContent').val();
+            var categories = $('#formCategories').val();
+            var date = $('#formDate').val();
+            var post = {
+                title: title,
+                content: content,
+                categories: categories,
+                date: date
+            };
+            console.log(post);
+            posts.push(post);
+            refreshBlog(posts);
+            clearForm();
+            allowRemovePostIcon();
+        });
+
+        function allowRemovePostIcon() {
+            $(".blogStructure").hover(
+                    function() {
+                        $(this).children(".removePost").removeClass("hidden");
+                    },
+                    function () {
+                        $(this).children(".removePost").addClass("hidden");
+                    });
+        }
+
+
+//        return false;
+})();
+</script>
+</body>
+</html>

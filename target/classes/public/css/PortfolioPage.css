@@ -1,0 +1,406 @@
+/*.wrapper {*/
+    /*position:absolute;*/
+    /*height:100%;*/
+    /*width:100%;*/
+/*}*/
+
+/*.panels {*/
+    /*position:relative;*/
+    /*height:100%;*/
+    /*min-height:100%;*/
+    /*width:100%;*/
+    /*z-index:1000;*/
+/*}*/
+
+/*#About{*/
+    /*background:#eee;*/
+    /*position:fixed;*/
+    /*color:red;*/
+    /*top:0;*/
+    /*z-index:-99;*/
+/*}*/
+
+
+
+
+/* Using links in Navbar will jump to specific positions on page*/
+
+#about-section,
+#resume-section,
+#portfolio-section,
+#contact-section
+{
+    display: block;
+    position: relative;
+    top: -70px;
+}
+
+.navbar {
+
+    height: 70px;
+    padding-top: 5px;
+    background: url("../images/brickwall.png");
+    letter-spacing: 2px;
+    flex-direction: row;
+}
+
+#myName {
+    width: 100%;
+    font-family: 'PT Serif', serif;
+    font-size: 2.5rem;
+    color: black;
+    letter-spacing: 17px;
+}
+
+#theNavbarWords {
+    background: url("../images/brickwall.png");
+    padding-top: 5px;
+    font-family: Avenir;
+    font-size: 16px;
+}
+
+#theNavbarWords li a:hover {
+    color: #3c6985 !important;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+#about {
+    z-index: -999;
+    min-height: 500px;
+    text-align: center;
+    margin-top: 65px;
+    padding-bottom: 50px;
+    /*background: #667d7b no-repeat fixed center;*/
+    background: #558883 no-repeat fixed center;
+    /*background: #363946 no-repeat fixed center;*/
+    /*background: #3c6985 no-repeat fixed center;*/
+    background-size: cover;
+}
+
+#myPortrait{
+    /*position: fixed;*/
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("../images/RyanHarper4-min-min.jpg");
+    box-shadow: 0 5px 5px 0 black, 0 5px 15px 0 rgba(0, 0, 0, .5);
+}
+
+.cropCircle{
+    margin: 75px auto 30px auto;
+    width: 325px;
+    height: 325px;
+    border-radius: 100%;
+    background: #eee no-repeat center;
+    background-size: cover;
+}
+
+#hello {
+    width: 60%;
+    color: #E8E8E8;
+    /*line-height: 1.3;*/
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin: 0 auto 1em;
+}
+
+#myNumberEmail {
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: black;
+}
+
+#myNumberEmail-email {
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+}
+
+#myNumberEmail-resume {
+    text-decoration: underline;
+    color: black;
+}
+
+#resume {
+    position: relative;
+    z-index: 500;
+    background: url("../images/paper_fibers.png");
+    /*background-color: #69A9A9;*/
+    /*#F0F8FF;*/
+    /*auto;*/
+    height: 20%;
+    text-align: center;
+}
+
+#linkToResume a:hover {
+    text-decoration: none;
+    color: #3c6985;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+/*#ResumeTitle {*/
+    /*text-align: center;*/
+    /*font-family: Georgia;*/
+    /*font-size: 40px;*/
+    /*letter-spacing: 5px;*/
+/*}*/
+
+.workAndSchool {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+}
+.pWorkAndSchool {
+    font-family: Avenir;
+    font-size: 20px;
+}
+
+/*.logo {*/
+    /*width: 200px;*/
+    /*height: 50px;*/
+    /*background: transparent;*/
+/*}*/
+
+.carousel .slideImage {
+
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    z-index: 400;
+}
+
+/*.carousel-control {*/
+    /*margin-right: 0px;*/
+    /*margin-left: -50px;*/
+/*}*/
+
+
+/*#Portfolio {*/
+    /*text-align: center;*/
+    /*padding: 0px;*/
+    /*!*background: url("../images/tweed.png");*!*/
+    /*background-color: black;*/
+
+            /*!*auto;*!*/
+/*}*/
+/*#PortfolioTitle {*/
+    /*text-align: center;*/
+    /*padding-top: 10px;*/
+    /*font-family: "Big Caslon";*/
+    /*letter-spacing: 15px;*/
+    /*font-size: 40px;*/
+    /*!*color: #1abc9c;*!*/
+    /*color: white;*/
+    /*text-shadow: 1px 1px black;*/
+/*}*/
+
+
+/*#Projects, #P1, #P2, #P3, #P4, #P5, #P6 {*/
+    /*!*padding: 15px;*!*/
+    /*font-family: Avenir;*/
+    /*letter-spacing: 3px;*/
+    /*font-size: 20px;*/
+    /*color: white;*/
+ /*}*/
+
+.slideImage {
+
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 0 3px 3px 0 black, 0 3px 15px 0 rgba(0, 0, 0, .8);
+    /*opacity:0.9;*/
+}
+
+.slideImage:hover{
+    opacity: 1;
+}
+
+#contact {
+    padding-top: 12px;
+    text-align: center;
+    background: url("../images/tweed.png");
+    /*background-color: #3b5a92;*/
+    /*height: 91vh;*/
+
+}
+
+#contactTitle {
+    padding-top: 10px;
+    color: whitesmoke;
+    font-family: 'PT Serif', serif;
+    letter-spacing: 13px;
+    font-size: 40px;
+}
+
+.social-media-link {
+    margin-bottom: 10px;
+    font-size: 100px;
+    color: white;
+}
+
+.social-media-link:hover {
+    color: #9acfea;
+}
+
+form {
+    margin-bottom: 21px;
+}
+input[type=text] {
+    margin: 10px;
+    padding: 5px 5px;
+    width: 400px;
+    /*box-sizing: border-box;*/
+    font-family: 'Merienda';
+    font-size: 24px;
+    color: white;
+    /*background: url("../images/paper_fibers.png");*/
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    transition: border 0.3s;
+
+}
+
+input[type="text"]:focus,
+input[type="text"].focus {
+    border-bottom: solid 2px white;
+}
+
+#msg {
+    /* To properly align multiline text fields with their labels */
+    /*vertical-align: top;*/
+
+    /* To give enough room to type some text */
+    height: 250px;
+    width: 400px;
+    font-family: 'Merienda';
+    font-size: 24px;
+    border: none;
+    resize: none;
+    /*border-radius: 5px;*/
+    /*background: url("../images/paper_fibers.png");*/
+    outline: none;
+    background: transparent;
+    color: white;
+
+
+    /* To allow users to resize any textarea vertically
+    It does not work on all browsers */
+    /*resize: vertical;*/
+}
+#Submit {
+
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 100px 10px 100px;
+    width: 400px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #3c6985; /* Green */
+    border: 1px solid darkslategrey;
+    border-radius: 5px;
+    font-family: "Georgia";
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    outline: none;
+}
+#Submit:hover {
+    background-color: #58A0C9;
+    opacity: 0.9;
+    color: white;
+}
+#Submit:active {
+    background-color: white;
+    color: white;
+}
+
+.scrollup {
+    width: 58px;
+    height: 48px;
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+    display: none;
+    text-indent: -9999px;
+    background: url('../images/codeup-arrow.png') transparent;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    #myName {
+        width: 100%;
+        font-family: 'PT Serif', serif;
+        font-size: 2.5rem;
+        color: black;
+        letter-spacing: 10px;
+        text-align: center;
+    }
+
+    #myPortrait {
+        width: 200px;
+        height: 200px;
+    }
+
+    .cropCircle {
+        margin: 50px auto 30px auto;
+    }
+
+    #hello {
+        width: 100%;
+        line-height: 1.3;
+        letter-spacing: 1px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.25em;
+        text-align: left;
+    }
+
+    #about {
+        padding-bottom: 25px;
+    }
+
+    #myNumberEmail {
+        display: block;
+        justify-content: center;
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        color: black;
+    }
+
+    #contactTitle {
+        font-size: 2em;
+    }
+
+    .pWorkAndSchool {
+        margin-bottom: 1.5em;
+    }
+
+    .workAndSchool {
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+    }
+
+    .social-media-link {
+        font-size: 60px;
+    }
+
+    .scrollup {
+        margin-right: -5em;
+        margin-bottom: -2em;
+    }
+
+
+
+}
